@@ -9,7 +9,7 @@ import pyrosim.constants as c
 class NEURON: 
 
     def __init__(self,line):
-
+        print(f'here is the line {line}')
         self.Determine_Name(line)
 
         self.Determine_Type(line)
@@ -43,6 +43,10 @@ class NEURON:
     def Is_Sensor_Neuron(self):
 
         return self.type == c.SENSOR_NEURON
+    
+    def Update_Sensor_Neuron(self):
+
+        self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
 
     def Is_Hidden_Neuron(self):
 
@@ -51,6 +55,9 @@ class NEURON:
     def Is_Motor_Neuron(self):
 
         return self.type == c.MOTOR_NEURON
+
+    def Update_Hidden_Or_Motor_Neuron(self):
+        self.Set_Value(math.pi/4.0)
 
     def Print(self):
 
