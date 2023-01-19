@@ -9,7 +9,7 @@ import pyrosim.constants as c
 class NEURON: 
 
     def __init__(self,line):
-        print(f'here is the line {line}')
+        # print(f'here is the line {line}')
         self.Determine_Name(line)
 
         self.Determine_Type(line)
@@ -56,8 +56,18 @@ class NEURON:
 
         return self.type == c.MOTOR_NEURON
 
-    def Update_Hidden_Or_Motor_Neuron(self):
-        self.Set_Value(math.pi/4.0)
+    def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
+        self.Set_Value(0)
+        for synapse in synapses:
+            if self.Get_Name() == synapse[1]:
+                weight = synapses[synapse].Get_Weight()
+                value = neurons[synapse[0]].Get_Value()
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(weight,value)
+        self.Threshold()
+
+    def Allow_Presynaptic_Neuron_To_Influence_Me(self,weight,value):
+        self.Add_To_Value(weight*value)
+        
 
     def Print(self):
 
