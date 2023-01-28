@@ -31,14 +31,14 @@ class PARALLELHILLCLIMBER:
 
     def Show_Best(self):
         currmin = float('inf')
-        currparent = None
+        reverse = {}
         for i in self.parents:
-            print(i,self.parents[i].fitness)
+            reverse[self.parents[i].fitness] = self.parents[i]
             if self.parents[i].fitness < currmin:
                 currparent = self.parents[i]
                 currmin = self.parents[i].fitness
-        print(currparent,currparent.fitness,currmin)
-        currparent.Start_Simulation("GUI")
+        
+        reverse[currmin].Start_Simulation("GUI")
 
     def Evolve_For_One_Generation(self):
         self.Spawn(self.nextAvailableID)
