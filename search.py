@@ -1,10 +1,10 @@
 import os
 
-from hillclimber import HILLCLIMBER
+from parallelHillClimber import PARALLELHILLCLIMBER
 
-hc = HILLCLIMBER()
-hc.Evolve()
-hc.Show_Best()
+phc = PARALLELHILLCLIMBER()
+phc.Evolve()
+phc.Show_Best()
 
 # i = 0
 # while i < 5:

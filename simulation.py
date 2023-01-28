@@ -15,6 +15,7 @@ class SIMULATION:
 
 
         directOrGui = sys.argv[1]
+        solutionID = sys.argv[2]
 
         if directOrGui == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
@@ -25,11 +26,11 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
 
     def Run(self):
-        for i in range(0,300):
+        for i in range(0,1000):
             time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(i)
