@@ -2,6 +2,7 @@ import pybullet as p
 import pybullet_data
 import time
 import pyrosim.pyrosim as pyrosim
+import constants as c
 
 from sensor import SENSOR
 from motor import MOTOR
@@ -41,7 +42,7 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
-                self.motors[jointName].Set_Value(self.robotId, desiredAngle)
+                self.motors[jointName].Set_Value(self.robotId, desiredAngle*c.motorJointRange)
 
     def Think(self):
         self.nn.Update()
@@ -59,4 +60,4 @@ class ROBOT:
         os.system("mv tmp"+str(self.solutionID)+".txt" " fitness"+str(self.solutionID)+".txt")
 
 
-        exit()
+        # exit()

@@ -14,3 +14,7 @@ NewRange = (numpy.pi/4 - -numpy.pi/4)
 numberofGenerations = 10
 
 populationSize = 10
+
+numSensorNeurons = 10
+numMotorNeurons = 8
+motorJointRange = .2
