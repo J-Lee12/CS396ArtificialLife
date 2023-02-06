@@ -13,8 +13,8 @@ OldRange = (1 - -1)
 NewRange = (numpy.pi/4 - -numpy.pi/4)
 numberofGenerations = 1
 
-populationSize = 2
+populationSize = 1
 
-numSensorNeurons = 7
-numMotorNeurons = 6
+numSensorNeurons = 5
+numMotorNeurons = 4
 motorJointRange = 1
