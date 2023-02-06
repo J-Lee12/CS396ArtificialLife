@@ -11,10 +11,10 @@ backphaseOffset = 0
 steps = 1000
 OldRange = (1 - -1)
 NewRange = (numpy.pi/4 - -numpy.pi/4)
-numberofGenerations = 10
+numberofGenerations = 1
 
-populationSize = 10
+populationSize = 2
 
-numSensorNeurons = 10
-numMotorNeurons = 8
-motorJointRange = .2
+numSensorNeurons = 7
+numMotorNeurons = 6
+motorJointRange = 1

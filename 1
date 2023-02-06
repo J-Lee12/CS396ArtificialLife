@@ -10,6 +10,22 @@ MotionThreadFunc thread started
 b3Printf: b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
 
 b3Printf: expected a world element, continuing without it.
+Traceback (most recent call last):
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/simulate.py", line 12, in <module>
+    simulation.Run()
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/simulation.py", line 36, in Run
+    self.robot.Sense(i)
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/robot.py", line 33, in Sense
+    i.Get_Value(index)
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/sensor.py", line 12, in Get_Value
+    self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
+    for pt in pts:
+TypeError: 'NoneType' object is not iterable
+Exception ignored in: <function SIMULATION.__del__ at 0x10d0015a0>
+Traceback (most recent call last):
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/simulation.py", line 44, in __del__
+pybullet.error: Not connected to physics server.
 numActiveThreads = 0
 stopping threads
 Thread with taskId 0 exiting
