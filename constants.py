@@ -15,6 +15,8 @@ numberofGenerations = 1
 
 populationSize = 1
 
-numSensorNeurons = 5
-numMotorNeurons = 4
+numoflinks = 5
+
+numSensorNeurons = 2
+numMotorNeurons = 1
 motorJointRange = 1
