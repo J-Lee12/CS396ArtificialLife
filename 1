@@ -1,0 +1,10 @@
+pybullet build time: Jan  8 2023 21:35:55
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.Traceback (most recent call last):
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/simulate.py", line 12, in <module>
+    simulation.Run()
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/simulation.py", line 38, in Run
+    self.robot.Act(i)
+  File "/Users/joshlee/Desktop/CS/5th-yr/CS396-ArtLife/robot.py", line 45, in Act
+    self.motors[jointName].Set_Value(self.robotId, desiredAngle*c.motorJointRange)
+KeyError: 'Torso_Back'

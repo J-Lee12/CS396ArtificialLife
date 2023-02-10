@@ -4,6 +4,7 @@ import os
 import pyrosim.pyrosim as pyrosim
 import time
 import constants as c
+import random
 
 
 class SOLUTION:
@@ -24,7 +25,7 @@ class SOLUTION:
         self.weights = self.weights * 2 - 1
         self.fitness = 0
         self.myID = ID
-
+        self.motors = []
 
     def Set_ID(self):
         self.myID += 1
@@ -35,7 +36,7 @@ class SOLUTION:
             self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
-        os.system("python3 simulate.py " + mode + " " + temp + " 2&>1" + "&")
+        os.system("python3 simulate.py " + mode + " " + temp)
 
     def Wait_For_Simulation_To_End(self):
         while not os.path.exists("fitness"+str(self.myID)+".txt"):
@@ -52,7 +53,7 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
-        os.system("python3 simulate.py " + mode + " " + temp + " &")
+        os.system("python3 simulate.py " + mode + " " + temp)
         
         while not os.path.exists("fitness"+str(self.myID)+".txt"):
             time.sleep(.01)
@@ -65,7 +66,7 @@ class SOLUTION:
     def Create_World(self):
         #World creation
         pyrosim.Start_SDF("world.sdf")
-        pyrosim.Send_Cube(name="Box", pos=[0,5,.5], size=[1,1,1])
+        pyrosim.Send_Cube(name="Box", pos=[0,5,.5], size=[1,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
         pyrosim.End()
 
     def Create_Body(self):
@@ -76,38 +77,41 @@ class SOLUTION:
         z = numpy.random.uniform(0,2)
 
         start = numpy.random.uniform(0,2)
-        name = "a"
-
         pyrosim.Start_URDF("body.urdf")
         ## absolute
-        pyrosim.Send_Cube(name="Torso", pos=[-4,0,3], size=[start,1,1])
-        pyrosim.Send_Cube(name="BackLeg", pos=[x/2,0,0], size=[x,y,z])
-        pyrosim.Send_Joint(name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [-4 + start/2,0,3], jointAxis= "0 0 1")
-        ## relative
-    
+        pyrosim.Send_Cube(name="Torso", pos=[-4,0,3], size=[start,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+        pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [-4 + start/2,0,3], jointAxis= "0 1 0")
+        pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+        prevx = x 
+
+        i = 1
+        while i < c.numoflinks:
+            newx = numpy.random.uniform(0,2)
+            newy = numpy.random.uniform(0,2)
+            newz = numpy.random.uniform(0,2)
+            pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
+            if bool(random.getrandbits(1)):
+                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+            else:
+                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+            prevx = newx
+
+            i += 1
+
         pyrosim.End()
 
     def Create_Brain(self):
          #Brain creation
         pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
         pyrosim.Send_Sensor_Neuron(name = 0, linkName="Torso")
-        pyrosim.Send_Sensor_Neuron(name = 1, linkName="BackLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 2, linkName="FrontLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 3, linkName="LeftLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 3, linkName="RightLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 3, linkName="FrontLowerLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 2, linkName="BackLowerLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 6, linkName="LeftLowerLeg")
-        # pyrosim.Send_Sensor_Neuron(name = 6, linkName="RightLowerLeg")
-
-        # pyrosim.Send_Motor_Neuron( name = 7, jointName="RightLeg_RightLowerLeg")
-        # pyrosim.Send_Motor_Neuron( name = 7, jointName="LeftLeg_LeftLowerLeg")
-        # pyrosim.Send_Motor_Neuron( name = 3, jointName="BackLeg_BackLowerLeg")
-        # pyrosim.Send_Motor_Neuron( name = 6, jointName="FrontLeg_FrontLowerLeg")
-        # pyrosim.Send_Motor_Neuron( name = 7, jointName="Torso_RightLeg")
-        pyrosim.Send_Motor_Neuron( name = 4, jointName="Torso_BackLeg")
-        # pyrosim.Send_Motor_Neuron( name = 5, jointName="Torso_FrontLeg")
-        # pyrosim.Send_Motor_Neuron( name = 12, jointName="Torso_LeftLeg")
+        pyrosim.Send_Motor_Neuron( name = 3, jointName="Torso_"+c.names[0])
+        pyrosim.Send_Sensor_Neuron(name = 0, linkName=c.names[0])
+        
+        i = 1
+        while i < c.numoflinks:
+            pyrosim.Send_Motor_Neuron( name = 3, jointName=c.names[i-1]+"_"+c.names[i])
+            pyrosim.Send_Sensor_Neuron(name = 0, linkName=c.names[i])
+            i += 1
 
         for currentRow in range(c.numSensorNeurons):
             for currentColumn in range(c.numMotorNeurons):
