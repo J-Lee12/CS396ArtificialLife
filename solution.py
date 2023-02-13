@@ -25,6 +25,7 @@ class SOLUTION:
         self.weights = self.weights * 2 - 1
         self.fitness = 0
         self.myID = ID
+        self.sensors = []
         self.motors = []
 
     def Set_ID(self):
@@ -71,31 +72,48 @@ class SOLUTION:
 
     def Create_Body(self):
         #Robot creation
-
         x = numpy.random.uniform(0,2)
         y = numpy.random.uniform(0,2)
         z = numpy.random.uniform(0,2)
-
         start = numpy.random.uniform(0,2)
         pyrosim.Start_URDF("body.urdf")
-        ## absolute
-        pyrosim.Send_Cube(name="Torso", pos=[-4,0,3], size=[start,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-        pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [-4 + start/2,0,3], jointAxis= "0 1 0")
-        pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-        prevx = x 
+        xpos = numpy.random.randint(-4,4)
 
+        if bool(random.getrandbits(1)):
+            ## if true then it has a sensor
+            pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+            pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
+            self.sensors.append("Torso")
+
+        else:
+            ## if false then no sensor
+            pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
+
+        self.motors.append("Torso_"+c.names[0])    
+    
+        if bool(random.getrandbits(1)):
+            pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+            self.sensors.append(c.names[0])
+        else:
+            pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+
+        prevx = x 
         i = 1
         while i < c.numoflinks:
             newx = numpy.random.uniform(0,2)
             newy = numpy.random.uniform(0,2)
             newz = numpy.random.uniform(0,2)
-            pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
+            
             if bool(random.getrandbits(1)):
                 pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                self.sensors.append(c.names[i])
             else:
-                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            
+            pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
+            self.motors.append(c.names[i-1]+"_"+c.names[i])
             prevx = newx
-
             i += 1
 
         pyrosim.End()
@@ -103,15 +121,15 @@ class SOLUTION:
     def Create_Brain(self):
          #Brain creation
         pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
-        pyrosim.Send_Sensor_Neuron(name = 0, linkName="Torso")
-        pyrosim.Send_Motor_Neuron( name = 3, jointName="Torso_"+c.names[0])
-        pyrosim.Send_Sensor_Neuron(name = 0, linkName=c.names[0])
         
-        i = 1
-        while i < c.numoflinks:
-            pyrosim.Send_Motor_Neuron( name = 3, jointName=c.names[i-1]+"_"+c.names[i])
-            pyrosim.Send_Sensor_Neuron(name = 0, linkName=c.names[i])
-            i += 1
+        count = 0
+        for i in self.sensors:
+            pyrosim.Send_Sensor_Neuron(name= count, linkName=i)
+            count += 1
+        
+        for j in self.motors:
+            pyrosim.Send_Motor_Neuron(name=count, jointName=j)
+            count += 1
 
         for currentRow in range(c.numSensorNeurons):
             for currentColumn in range(c.numMotorNeurons):

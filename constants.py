@@ -19,7 +19,7 @@ numoflinks = numpy.random.randint(10)
 
 numSensorNeurons = numoflinks + 2
 numMotorNeurons = numoflinks + 1
-motorJointRange = 10
+motorJointRange = .45
 
 names = [
     "Apple", "Dog", "Person", "Fox", "Flower", "Neighbor", "Coffee", "Phone", "Table", "Impact",

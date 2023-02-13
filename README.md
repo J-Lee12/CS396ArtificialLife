@@ -3,9 +3,23 @@
 
 
 #### INFO ####
-I used a fitness function that by accessing the xcoordinate of the linkzero I am able to move my seal to the left (away from the the observer). I accomplished this by mutating generations and saving each simulation into a dictionary that would hold the fitness score of each simulation. In the end, I am looking for the most negative value so that my stingray/seal will move in the -x direction.
+In this assignment, we are asked to randomly generate a 1d morphology
+
+### STEPS ###
+In order to randomly generate a 1d morphology such as a snake, I wanted to first randomly generate the position of the first link of the creature.
+
+The first link is very important as the first link and position are absolute in pybullet, this means that for any subsequent links/joints, it would be relative to the link/joint upstream to it.
+
+Below is a diagram that shows this.
+
+![Alt text](./jointdiagram.pngraw=true "Title")
+
+After randomly generating the first link and joints positions, I am able to run a loop for a randomly generated number of links where I randomly generate a link and a joint, and am able to connect them to previous joints by saving that information.
+
+The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
+These are randomly generated and allow the snake to have random movement and behavior.
+
 
 #### TO RUN ####
-1. Switch to branch assignment5
+1. Switch to branch a6try4
 2. Run python3 search.py
-3. To change the number of generations, population size, and the number of sensor/motor neurons edit constants.py
