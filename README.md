@@ -12,7 +12,7 @@ The first link is very important as the first link and position are absolute in 
 
 Below is a diagram that shows this.
 
-![Alt text](/jointdiagram.pngraw=true "Title")
+![My Image](/jointdiagram.png)
 
 After randomly generating the first link and joints positions, I am able to run a loop for a randomly generated number of links where I randomly generate a link and a joint, and am able to connect them to previous joints by saving that information.
 
