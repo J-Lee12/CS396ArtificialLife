@@ -15,7 +15,8 @@ numberofGenerations = 1
 
 populationSize = 1
 
-numoflinks = numpy.random.randint(10)
+# numoflinks = numpy.random.randint(10,20)
+numoflinks = 40
 
 numSensorNeurons = numoflinks + 2
 numMotorNeurons = numoflinks + 1
@@ -23,6 +24,8 @@ motorJointRange = .45
 
 names = [
     "Apple", "Dog", "Person", "Fox", "Flower", "Neighbor", "Coffee", "Phone", "Table", "Impact",
-    "Genshin", "Flute", "Garbage", "Powerade", "construct", "artifact", "feature", "token", "library", 
-    "mana", "top", "shuffle", "chair", "stool", "water", "pound"
+    "Genshin", "Flute", "Garbage", "Powerade", "Construct", "Artifact", "Feature", "Token", "Library", 
+    "Mana", "Top", "Shuffle", "Chair", "Stool", "Water", "Pound", "Computer", "Bottle", "Clock", "Lamp",
+    "Systems", "A", "Programmer", "Perspective", "Cracking", "The", "Code", "Interview", "Linear", "Algebra",
+    "It's", "Applications"
 ]
