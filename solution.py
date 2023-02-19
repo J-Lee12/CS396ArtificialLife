@@ -70,8 +70,83 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Box", pos=[0,5,.5], size=[1,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
         pyrosim.End()
 
+    def Random_Side(self, currside):
+
+        # sides = {
+        #     "x": ["-x","y","-y","z","-z"],
+        #     "-x": ["x", "y", "-y", "z", "-z"],
+        #     "y": ["x", "-x", "-y", "z", "-z"],
+        #     "-y": ["x", "-x", "y", "z", "-z"],
+        #     "z": ["x", "-x", "y", "-y", "-z"],
+        #     "-z": ["x", "-x", "y", "-y", "z"]
+        # }
+
+        sides = {
+            "x": ["y","z"],
+            "y": ["x","z"],
+            "z": ["x","y"],
+        }
+
+        currchoices = sides[currside]
+        return currchoices[numpy.random.randint(0,1)]
+
+    def Generate_Face(self,i,prevside):
+
+        ## given an x y z coordinate of a joint randomly generate a cube and a joint
+        ## return the x y z corrdinate of the joint
+
+        newx = numpy.random.uniform(0,2)
+        newy = numpy.random.uniform(0,2)
+        newz = numpy.random.uniform(0,2)
+
+        if self.Random_Side(prevside) == "x":
+            if bool(random.getrandbits(1)):
+                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                self.sensors.append(c.names[i])
+            else:
+                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            return [newx,"x"]
+
+        # elif self.Random_Side(prevside) == "-x":
+        #     if bool(random.getrandbits(1)):
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[-1*(newx/2),0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+        #     else:
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[-1*(newx/2),0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+        #     return [newx,"-x"]
+        
+        elif self.Random_Side(prevside) == "y":
+            if bool(random.getrandbits(1)):
+                pyrosim.Send_Cube(name=c.names[i], pos=[0,newy/2,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                self.sensors.append(c.names[i])
+            else:
+                pyrosim.Send_Cube(name=c.names[i], pos=[0,newy/2,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            return [newy,"y"]
+        
+        # elif self.Random_Side(prevside) == "-y":
+        #     if bool(random.getrandbits(1)):
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[0,-1*(newy/2),0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+        #         self.sensors.append(c.names[i])
+        #     else:
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[0,-1*(newy/2),0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+        #     return [newy,"-y"]
+        
+        elif self.Random_Side(prevside) == "z":
+            if bool(random.getrandbits(1)):
+                pyrosim.Send_Cube(name=c.names[i], pos=[0,0,newz/2], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                self.sensors.append(c.names[i])
+            else:
+                pyrosim.Send_Cube(name=c.names[i], pos=[0,0,newz/2], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            return [newz,"z"]
+        
+        # elif self.Random_Side(prevside) == "-z":
+        #     if bool(random.getrandbits(1)):
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[0,0,-1*(newz/2)], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+        #         self.sensors.append(c.names[i])
+        #     else:
+        #         pyrosim.Send_Cube(name=c.names[i], pos=[0,0,-1*(newz/2)], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+        #     return [newz,"-z"]
+        
     def Create_Body(self):
-        #Robot creation
         x = numpy.random.uniform(0,2)
         y = numpy.random.uniform(0,2)
         z = numpy.random.uniform(0,2)
@@ -91,32 +166,93 @@ class SOLUTION:
             pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
 
         self.motors.append("Torso_"+c.names[0])    
-    
+        
         if bool(random.getrandbits(1)):
             pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
             self.sensors.append(c.names[0])
         else:
             pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
-
-        prevx = x 
         i = 1
-        while i < c.numoflinks:
-            newx = numpy.random.uniform(0,2)
-            newy = numpy.random.uniform(0,2)
-            newz = numpy.random.uniform(0,2)
-            
-            if bool(random.getrandbits(1)):
-                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-                self.sensors.append(c.names[i])
-            else:
-                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
-            
-            pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
-            self.motors.append(c.names[i-1]+"_"+c.names[i])
-            prevx = newx
-            i += 1
 
+        prevface = "x"
+        while i < c.numoflinks:
+            if i == 1:
+                temp = self.Generate_Face(i,prevface)
+                pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [temp[0],0,0], jointAxis= "0 1 0")
+                self.motors.append(c.names[i-1]+"_"+c.names[i])
+                prevface = temp[1]
+                i += 1
+            else:
+                temp = self.Generate_Face(i,prevface)
+                print(temp[1])
+                if temp[1] == "x":
+                    pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [temp[0],0,0], jointAxis= "0 1 0")
+                    self.motors.append(c.names[i-1]+"_"+c.names[i])
+                    prevface = temp[1]
+                    i += 1
+
+                elif temp[1] == "y":
+                    pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [0,temp[0],0], jointAxis= "0 1 0")
+                    self.motors.append(c.names[i-1]+"_"+c.names[i])
+                    prevface = temp[1]
+                    i += 1
+
+                else:
+                    pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [0,0,temp[1]], jointAxis= "0 1 0")
+                    self.motors.append(c.names[i-1]+"_"+c.names[i])
+                    prevface = temp[1]
+                    i += 1
         pyrosim.End()
+    
+
+
+    # def Create_Body(self):
+    #     #Robot creation
+    #     x = numpy.random.uniform(0,2)
+    #     y = numpy.random.uniform(0,2)
+    #     z = numpy.random.uniform(0,2)
+    #     start = numpy.random.uniform(0,2)
+    #     pyrosim.Start_URDF("body.urdf")
+    #     xpos = numpy.random.randint(-4,4)
+
+    #     if bool(random.getrandbits(1)):
+    #         ## if true then it has a sensor
+    #         pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+    #         pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
+    #         self.sensors.append("Torso")
+
+    #     else:
+    #         ## if false then no sensor
+    #         pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+    #         pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
+
+    #     self.motors.append("Torso_"+c.names[0])    
+    
+    #     if bool(random.getrandbits(1)):
+    #         pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+    #         self.sensors.append(c.names[0])
+    #     else:
+    #         pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+
+    #     prevx = x 
+    #     i = 1
+    #     while i < c.numoflinks:
+    #         newx = numpy.random.uniform(0,2)
+    #         newy = numpy.random.uniform(0,2)
+    #         newz = numpy.random.uniform(0,2)
+            
+    #         if bool(random.getrandbits(1)):
+    #             pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+    #             self.sensors.append(c.names[i])
+    #         else:
+    #             pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            
+    #         pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
+    #         self.motors.append(c.names[i-1]+"_"+c.names[i])
+    #         prevx = newx
+    #         i += 1
+
+    #     pyrosim.End()
 
     def Create_Brain(self):
          #Brain creation
