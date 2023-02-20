@@ -15,10 +15,10 @@ numberofGenerations = 1
 
 populationSize = 1
 
-numoflinks = numpy.random.randint(0,10)
+numoflinks = numpy.random.randint(0,7)
 
-numSensorNeurons = numoflinks + 2
-numMotorNeurons = numoflinks + 1
+numSensorNeurons = numoflinks + 1
+numMotorNeurons = numoflinks 
 motorJointRange = .45
 
 names = [

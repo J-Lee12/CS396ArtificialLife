@@ -123,6 +123,13 @@ class SOLUTION:
         while j < len(self.links):
 
             currlink = self.links.pop()
+            currparent = self.linked[numpy.random.randint(0,len(self.linked))]
+            randomface = self.Face_Generate(prevface)
+
+            if currlink[0] == currparent[0]:
+                self.links.append(currlink)
+                pass
+
             if i == 0:
                 currparent = self.linked[0]
                 pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
@@ -131,9 +138,6 @@ class SOLUTION:
                 randomface = "x"
             
             else:
-                currparent = self.linked[numpy.random.randint(0,len(self.linked))]
-                randomface = self.Face_Generate(prevface)
-
                 if randomface not in self.linkfaces[currparent[0]]:
                     if randomface == "x":
                         pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
@@ -149,7 +153,7 @@ class SOLUTION:
                         self.linkfaces[currparent[0]].append(randomface)
                 else:
                         pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
-                                type = "revolute", position = [currparent[2][0]/2,currparent[2][1]/2,currparent[2][2]/2], jointAxis= "0 1 0")
+                                type = "revolute", position = [currparent[2][0]/3,currparent[2][1]/3,currparent[2][2]/3], jointAxis= "0 1 0")
             i += 1
             self.linked.append(currlink)
             prevface = randomface
