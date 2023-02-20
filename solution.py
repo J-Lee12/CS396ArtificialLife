@@ -27,6 +27,8 @@ class SOLUTION:
         self.myID = ID
         self.sensors = []
         self.motors = []
+        self.links = []
+        self.linked = []
 
     def Set_ID(self):
         self.myID += 1
@@ -70,51 +72,53 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Box", pos=[0,5,.5], size=[1,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
         pyrosim.End()
 
+    def Generate_Links(self):
+        i = 1
+        while i < c.numoflinks:
+            x = numpy.random.uniform(0,2)
+            y = numpy.random.uniform(0,2)
+            z = numpy.random.uniform(0,2)
+            pyrosim.Send_Cube(name=c.names[i], pos=[x/2,y/2,z/2], size=[x,y,z],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+            self.links.append([c.names[i],[x/2,y/2,z/2],[x,y,z]])
+            i += 1
+
     def Create_Body(self):
         #Robot creation
         x = numpy.random.uniform(0,2)
         y = numpy.random.uniform(0,2)
         z = numpy.random.uniform(0,2)
+
         start = numpy.random.uniform(0,2)
         pyrosim.Start_URDF("body.urdf")
         xpos = numpy.random.randint(-4,4)
 
         if bool(random.getrandbits(1)):
-            ## if true then it has a sensor
             pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-            pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
             self.sensors.append("Torso")
-
         else:
-            ## if false then no sensor
             pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
-            pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
+        
+        self.linked.append(["Torso",[xpos,0,3],[start,1,1]])
+        self.Generate_Links()
 
-        self.motors.append("Torso_"+c.names[0])    
-    
-        if bool(random.getrandbits(1)):
-            pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-            self.sensors.append(c.names[0])
-        else:
-            pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+        j = 0
+        i = 0
 
-        prevx = x 
-        i = 1
-        while i < c.numoflinks:
-            newx = numpy.random.uniform(0,2)
-            newy = numpy.random.uniform(0,2)
-            newz = numpy.random.uniform(0,2)
+        while j < len(self.links):
+
+            currlink = self.links.pop()
+            if i == 0:
+                currparent = self.linked[0]
+                pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                type = "revolute", position = [xpos+start/2,currparent[1][1], currparent[1][2]], jointAxis= "0 1 0")
             
-            if bool(random.getrandbits(1)):
-                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
-                self.sensors.append(c.names[i])
             else:
-                pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
-            
-            pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
-            self.motors.append(c.names[i-1]+"_"+c.names[i])
-            prevx = newx
+                currparent = self.linked[numpy.random.randint(0,len(self.linked))]
+
+                pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                type = "revolute", position = [currparent[2][0]/2,currparent[2][1]/2, currparent[2][2]/2], jointAxis= "0 1 0")
             i += 1
+            self.linked.append(currlink)
 
         pyrosim.End()
 
