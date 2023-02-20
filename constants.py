@@ -26,3 +26,15 @@ names = [
     "Genshin", "Flute", "Garbage", "Powerade", "construct", "artifact", "feature", "token", "library", 
     "mana", "top", "shuffle", "chair", "stool", "water", "pound"
 ]
+
+names1 = [
+    "Pample", "Essence", "Grace", "Yoojin", "Lee", "My", "Story", "Time", "Math", "Science"
+]
+
+names2 = [
+    "Because", "I", "Can", "Learn", "Macbook", "Ring", "Orange Juice", "Wood", "Backpack", "North", "Face"
+]
+
+names3 = [
+    "Concrete", "Car", "Post", "FedEx", "Albion", "Last", "Quarter", "Rocks"
+]
