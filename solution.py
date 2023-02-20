@@ -72,7 +72,6 @@ class SOLUTION:
         pyrosim.End()
 
     def Generate_Cube(self,i,prevside):
-            
             ## Generate a cube of a random size onto a random side
             sides = {
                 "x":["y","z"],
@@ -104,7 +103,7 @@ class SOLUTION:
                     self.sensors.append(c.names[i])
                 else:
                     pyrosim.Send_Cube(name=c.names[i], pos=[0,0,newz/2], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
-            
+            self.links.append([c.names[i], newx,newy,newz])
             return([c.names[i],currside,newx,newy,newz])
 
     def Create_Body(self):
@@ -139,50 +138,57 @@ class SOLUTION:
         self.links.append([c.names[0],x,y,z])
         prevside = "x"
         i = 1
+
         while i < c.numoflinks:
             ## randomly generate a cube, then attach it to a random cube
             currcube = self.Generate_Cube(i,prevside)
+            i += 1
             currside = currcube[1]
-        
+            currname = currcube[0]
+            
             prev = self.links[numpy.random.randint(0,len(self.links))]
             prevparentname = prev[0]
             prevx = prev[1]
             prevy = prev[2]
             prevz = prev[3]
-
-            ## need to check the previous face and the current face
-            ## 
+            print(i)
+            print(f'my prevside was {prevside} and I want to create at this side {currside}')
+            print(self.links)
+            print(f'the current cube I am at is {currname}')
+            print(f'I am going to add to this cube {prevparentname}')
             if prevside == "x":
                 if currside == "x":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx,0,0], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
                 elif currside == "y":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx/2,prevy/2,0], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx/2,prevy/2,0], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
                 else:
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx/2,0,prevz/2], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx/2,0,prevz/2], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
             elif prevside == "y":
                 if currside == "x":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx/2,prevy/2,0], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx/2,prevy/2,0], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
                 elif currside == "y":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [0,prevy,0], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [0,prevy,0], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
                 else:
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [0,prevy/2,prevz/2], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [0,prevy/2,prevz/2], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
             else:
                 if currside == "x":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx/2,0,prevz/2], jointAxis= "0 1 0")
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx/2,0,prevz/2], jointAxis= "0 1 0")
                     self.motors.append(prevparentname+"_"+c.names[i])
                 elif currside == "y":
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [prevx/2,0,prevy/2], jointAxis= "0 1 0")
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [prevx/2,0,prevy/2], jointAxis= "0 1 0")
                     self.motors.append(prevparentname+"_"+c.names[i])
                 else:
-                    pyrosim.Send_Joint(name = prevparentname+"_"+c.names[i] , parent= prevparentname , child = c.names[i] , type = "revolute", position = [0,0,prevz], jointAxis= "0 1 0")
-                    self.motors.append(prevparentname+"_"+c.names[i])
-            i += 1
+                    pyrosim.Send_Joint(name = prevparentname+"_"+currname , parent= prevparentname , child = currname , type = "revolute", position = [0,0,prevz], jointAxis= "0 1 0")
+                    self.motors.append(prevparentname+"_"+currname)
+
+            prevside = currside
+            print(f'I added this joint {prevparentname+"_"+currname}\n')
 
         pyrosim.End()
 
@@ -195,6 +201,7 @@ class SOLUTION:
             pyrosim.Send_Sensor_Neuron(name= count, linkName=i)
             count += 1
         
+        print(self.motors)
         for j in self.motors:
             pyrosim.Send_Motor_Neuron(name=count, jointName=j)
             count += 1

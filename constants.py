@@ -17,7 +17,7 @@ populationSize = 1
 
 #numoflinks = numpy.random.randint(10)
 ## breaks at 3
-numoflinks = 2
+numoflinks = 4
 
 numSensorNeurons = numoflinks + 2
 numMotorNeurons = numoflinks + 1
