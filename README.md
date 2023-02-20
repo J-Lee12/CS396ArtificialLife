@@ -6,7 +6,7 @@
 In this assignment, we are asked to randomly generate a 1d morphology
 
 ### STEPS ###
-In order to randomly generate a 1d morphology such as a snake, I wanted to first randomly generate the position of the first link of the creature.
+In order to randomly generate a 3d morphology, I wanted to first randomly generate the position of the first link of the creature.
 
 The first link is very important as the first link and position are absolute in pybullet, this means that for any subsequent links/joints, it would be relative to the link/joint upstream to it.
 
@@ -14,12 +14,25 @@ Below is a diagram that shows this.
 
 ![My Image](/jointdiagram.png)
 
-After randomly generating the first link and joints positions, I am able to run a loop for a randomly generated number of links where I randomly generate a link and a joint, and am able to connect them to previous joints by saving that information.
+In order to create a 3d creature, at each step the creature must randomly choose which direction to grow in. 
+The creature decides which direction to grow in randomly however, the joint placement gets a bit complicated in this case.
+
+In the below figure that I drew up we can see that if a link grows straight it is straight forward.
+The joint is located at the prior links length/2
+
+However, in the case that it decides to branch off another way then, it must have the information of which ever side's length it wants to grow to. In this example if the creature wants to grow to the right, then it must place a joint at the prior links xlength/2 and ylength/2
+
+![My Image](/IMG_0889.jpeg)
 
 The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
-These are randomly generated and allow the snake to have random movement and behavior.
+These are randomly generated and allow the figure to have random movement and behavior.
 
 
 #### TO RUN ####
 1. Switch to branch a6try4
 2. Run python3 search.py
+
+
+###  Credits ###
+CS396 Artificial Life - Prof Sam Kriegma
+LudoBots Tutorial - https://www.reddit.com/r/ludobots/
