@@ -29,6 +29,7 @@ class SOLUTION:
         self.motors = []
         self.links = []
         self.linked = []
+        self.linkfaces = {}
 
     def Set_ID(self):
         self.myID += 1
@@ -72,14 +73,28 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Box", pos=[0,5,.5], size=[1,1,1], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
         pyrosim.End()
 
+    def Face_Generate(self,prevface):
+        faces = {"x":["y","z"],
+                 "y":["x","z"],
+                 "z":["x","y"]}
+        
+        return faces[prevface][numpy.random.randint(0,2)]
+
     def Generate_Links(self):
         i = 1
         while i < c.numoflinks:
             x = numpy.random.uniform(0,2)
             y = numpy.random.uniform(0,2)
             z = numpy.random.uniform(0,2)
-            pyrosim.Send_Cube(name=c.names[i], pos=[x/2,y/2,z/2], size=[x,y,z],color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+
+            if bool(random.getrandbits(1)):
+                pyrosim.Send_Cube(name=c.names[i], pos=[x/2,y/2,z/2], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
+                self.sensors.append(c.names[i])
+            else:
+                pyrosim.Send_Cube(name=c.names[i], pos=[x/2,y/2,z/2], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
+            
             self.links.append([c.names[i],[x/2,y/2,z/2],[x,y,z]])
+            self.linkfaces[c.names[i]] = []
             i += 1
 
     def Create_Body(self):
@@ -99,11 +114,12 @@ class SOLUTION:
             pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
         
         self.linked.append(["Torso",[xpos,0,3],[start,1,1]])
+        self.linkfaces["Torso"] = []
         self.Generate_Links()
 
         j = 0
         i = 0
-
+        prevface = "x"
         while j < len(self.links):
 
             currlink = self.links.pop()
@@ -111,14 +127,32 @@ class SOLUTION:
                 currparent = self.linked[0]
                 pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
                                 type = "revolute", position = [xpos+start/2,currparent[1][1], currparent[1][2]], jointAxis= "0 1 0")
+                self.linkfaces[currparent[0]].append("x")
+                randomface = "x"
             
             else:
                 currparent = self.linked[numpy.random.randint(0,len(self.linked))]
+                randomface = self.Face_Generate(prevface)
 
-                pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
-                                type = "revolute", position = [currparent[2][0]/2,currparent[2][1]/2, currparent[2][2]/2], jointAxis= "0 1 0")
+                if randomface not in self.linkfaces[currparent[0]]:
+                    if randomface == "x":
+                        pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                        type = "revolute", position = [currparent[2][0]/2,0,0], jointAxis= "0 1 0")
+                        self.linkfaces[currparent[0]].append(randomface)
+                    elif randomface == "y":
+                        pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                type = "revolute", position = [0,currparent[2][1]/2,0], jointAxis= "0 1 0")
+                        self.linkfaces[currparent[0]].append(randomface)
+                    else:
+                        pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                type = "revolute", position = [0,0,currparent[2][2]/2], jointAxis= "0 1 0")
+                        self.linkfaces[currparent[0]].append(randomface)
+                else:
+                        pyrosim.Send_Joint(name = currparent[0]+"_"+currlink[0] , parent=currparent[0] , child = currlink[0] ,
+                                type = "revolute", position = [currparent[2][0]/2,currparent[2][1]/2,currparent[2][2]/2], jointAxis= "0 1 0")
             i += 1
             self.linked.append(currlink)
+            prevface = randomface
 
         pyrosim.End()
 
