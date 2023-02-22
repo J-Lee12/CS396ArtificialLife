@@ -18,6 +18,7 @@ class PARALLELHILLCLIMBER:
 
     def Evaluate(self,solutions):
         for i in range(c.populationSize):
+            print(f'I am running this individual {i} in this populationsize {c.populationSize}')
             solutions[i].Start_Simulation("DIRECT")
 
         for i in range(c.populationSize):

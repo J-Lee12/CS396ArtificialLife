@@ -39,6 +39,6 @@
     <synapse sourceNeuronName = "6" targetNeuronName = "8" weight = "-0.7661524041385883" />
     <synapse sourceNeuronName = "6" targetNeuronName = "9" weight = "-0.8272571201361378" />
     <synapse sourceNeuronName = "6" targetNeuronName = "10" weight = "-0.1313192628845703" />
-    <synapse sourceNeuronName = "6" targetNeuronName = "11" weight = "0.823186830129895" />
+    <synapse sourceNeuronName = "6" targetNeuronName = "11" weight = "0.7024686718640651" />
     <synapse sourceNeuronName = "6" targetNeuronName = "12" weight = "-0.8147012195246319" />
 </neuralNetwork>
