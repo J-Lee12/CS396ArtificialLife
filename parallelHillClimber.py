@@ -64,13 +64,10 @@ class PARALLELHILLCLIMBER:
         for i in self.children:
             if self.parents[i].fitness > self.children[i].fitness:
                 self.parents[i] = self.children[i]
-        # for i in self.parents:
-        #     if self.parents[i].fitness > self.children[i].fitness:
-        #         self.parents[i] = self.children[i]
 
     def Evolve(self):
 
         self.Evaluate(self.parents)
-
+        
         for currentGeneration in range(c.numberofGenerations):
             self.Evolve_For_One_Generation()

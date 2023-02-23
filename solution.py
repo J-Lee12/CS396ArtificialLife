@@ -116,7 +116,10 @@ class SOLUTION:
             
             self.links.append([newx,newy,newz])
             return [newx,newy,newz,"z"]
-        
+    
+    def Mutate2(self):
+        f = open("fitness"+str(self.myID)+".txt", "r")
+        f.close()
 
     def Create_Body(self):
         x = numpy.random.uniform(0,4)
