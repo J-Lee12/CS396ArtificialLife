@@ -48,7 +48,7 @@ class PARALLELHILLCLIMBER:
         self.Print()
         self.Select()
 
-    def Spawn(self):
+    def Spawn(self,id):
         self.children = {}
         for parent in self.parents:
             currchild = copy.deepcopy(self.parents[parent])

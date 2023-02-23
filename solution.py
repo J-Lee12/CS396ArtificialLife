@@ -26,7 +26,7 @@ class SOLUTION:
         self.motors = []
         self.links = []
         self.counter = 0
-        self.first_link = []
+
 
     def Set_ID(self):
         self.myID += 1
@@ -36,6 +36,7 @@ class SOLUTION:
             self.Create_World()
             self.Create_Body()
         self.Create_Brain()
+
         temp = str(self.myID)
         os.system("python3 simulate.py " + mode + " " + temp)
 
@@ -91,7 +92,7 @@ class SOLUTION:
             else:
                 pyrosim.Send_Cube(name=c.names[i], pos=[newx/2,0,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
             
-            self.links.append([newx,newy,newz])
+            self.links.append([c.names[i],newx,newy,newz])
             return [newx,newy,newz,"x"]
         
         elif self.Random_Side(prevside) == "y":
@@ -101,7 +102,7 @@ class SOLUTION:
             else:
                 pyrosim.Send_Cube(name=c.names[i], pos=[0,newy/2,0], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
             
-            self.links.append([newx,newy,newz])
+            self.links.append([c.names[i],newx,newy,newz])
             return [newx,newy,newz,"y"]
         
         else:
@@ -111,7 +112,7 @@ class SOLUTION:
             else:
                 pyrosim.Send_Cube(name=c.names[i], pos=[0,0,newz/2], size=[newx,newy,newz],color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
             
-            self.links.append([newx,newy,newz])
+            self.links.append([c.names[i],newx,newy,newz])
             return [newx,newy,newz,"z"]
 
     def Create_Body(self):
@@ -133,7 +134,8 @@ class SOLUTION:
             pyrosim.Send_Cube(name="Torso", pos=[xpos,0,3], size=[start,1,1], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
             pyrosim.Send_Joint(name = "Torso_"+c.names[0] , parent= "Torso" , child = c.names[0] , type = "revolute", position = [xpos + start/2,0,3], jointAxis= "0 1 0")
 
-        self.motors.append("Torso_"+c.names[0])    
+        self.motors.append("Torso_"+c.names[0])
+        self.links.append(["Torso",start,1,1])    
         
         if bool(random.getrandbits(1)):
             pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 0 1.0"/>', colorname = '<material name="Green">')
@@ -141,7 +143,7 @@ class SOLUTION:
         else:
             pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
         
-        self.first_link.append(["Torso",[start,1,1]])
+        self.links.append([c.names[0],x,y,z])
 
         i = 1
         prevface = "x"
@@ -175,6 +177,7 @@ class SOLUTION:
                         pyrosim.Send_Cube(name=c.names1[i], pos=[0,y/2,0], size=[x,y,z], color='    <color rgba="0 0 0.5 1"/>', colorname = '<material name="Ryan">')
                         pyrosim.Send_Joint(name = c.names[i]+"_"+c.names1[i] , parent= c.names[i] , child = c.names1[i] , type = "revolute", position = [temp[0]/2,temp[1]/2,0], jointAxis= "0 1 0")
                         self.motors.append(c.names[i]+"_"+c.names1[i])
+                        self.links.append([c.names1[i],x,y,z])
                         
                         prevx = temp[0]
                         prevy = temp[1]
@@ -217,10 +220,10 @@ class SOLUTION:
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
-                        pyrosim.Send_Cube(name=c.names1[i], pos=[0,0,z/2], size=[x,y,z], color='    <color rgba="1 0.5 0.5 1"/>', colorname = '<material name="Quin">')
-
+                        pyrosim.Send_Cube(name=c.names2[i], pos=[0,0,z/2], size=[x,y,z], color='    <color rgba="1 0.5 0.5 1"/>', colorname = '<material name="Quin">')
                         pyrosim.Send_Joint(name = c.names[i]+"_"+c.names1[i] , parent= c.names[i] , child = c.names1[i] , type = "revolute", position = [0,temp[1]/2,temp[2/2]], jointAxis= "0 1 0")
                         self.motors.append(c.names[i]+"_"+c.names1[i])
+                        self.links.append([c.names2[i],x,y,z])
 
                         prevx = temp[0]
                         prevy = temp[1]
@@ -264,9 +267,6 @@ class SOLUTION:
                         prevz = temp[2]
                         prevface = temp[3]
                         i += 1
-        
-
-        
         pyrosim.End()
 
     def Create_Brain(self):
@@ -287,7 +287,7 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+c.numSensorNeurons, weight=self.weights[currentRow][currentColumn])
         pyrosim.End()        
 
-    def Mutate(self,parent):
+    def Mutate(self):
         ## changes the snyaptic weights of the brain
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
