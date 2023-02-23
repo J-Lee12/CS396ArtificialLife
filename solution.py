@@ -10,9 +10,6 @@ import random
 class SOLUTION:
 
     def __init__(self,ID) -> None:
-        # self.weights = numpy.array([[numpy.random.rand(), numpy.random.rand()],
-        #                             [numpy.random.rand(), numpy.random.rand()],
-        #                             [numpy.random.rand(), numpy.random.rand()]])
         weights = []
         for i in range(c.numSensorNeurons):
             temp = []
@@ -29,6 +26,7 @@ class SOLUTION:
         self.motors = []
         self.links = []
         self.counter = 0
+        self.first_link = []
 
     def Set_ID(self):
         self.myID += 1
@@ -76,7 +74,6 @@ class SOLUTION:
             "y": ["x","y","z"],
             "z": ["x","y","z"],
         }
-
         currchoices = sides[currside]
         return currchoices[numpy.random.randint(0,3)]
 
@@ -116,10 +113,6 @@ class SOLUTION:
             
             self.links.append([newx,newy,newz])
             return [newx,newy,newz,"z"]
-    
-    def Mutate2(self):
-        f = open("fitness"+str(self.myID)+".txt", "r")
-        f.close()
 
     def Create_Body(self):
         x = numpy.random.uniform(0,4)
@@ -148,6 +141,8 @@ class SOLUTION:
         else:
             pyrosim.Send_Cube(name=c.names[0], pos=[x/2,0,0], size=[x,y,z], color='    <color rgba="0 1.0 1.0 1.0"/>', colorname = '<material name="Cyan">')
         
+        self.first_link.append(["Torso",[start,1,1]])
+
         i = 1
         prevface = "x"
         
@@ -177,7 +172,6 @@ class SOLUTION:
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
 
-                        print("calling Ryan Color")
                         pyrosim.Send_Cube(name=c.names1[i], pos=[0,y/2,0], size=[x,y,z], color='    <color rgba="0 0 0.5 1"/>', colorname = '<material name="Ryan">')
                         pyrosim.Send_Joint(name = c.names[i]+"_"+c.names1[i] , parent= c.names[i] , child = c.names1[i] , type = "revolute", position = [temp[0]/2,temp[1]/2,0], jointAxis= "0 1 0")
                         self.motors.append(c.names[i]+"_"+c.names1[i])
@@ -220,7 +214,6 @@ class SOLUTION:
                         pyrosim.Send_Joint(name = c.names[i-1]+"_"+c.names[i] , parent= c.names[i-1] , child = c.names[i] , type = "revolute", position = [prevx/2,prevy/2,0], jointAxis= "0 1 0")
                         self.motors.append(c.names[i-1]+"_"+c.names[i])
 
-                        print("calling quin color")
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
@@ -294,10 +287,12 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+c.numSensorNeurons, weight=self.weights[currentRow][currentColumn])
         pyrosim.End()        
 
-    def Mutate(self):
+    def Mutate(self,parent):
+        ## changes the snyaptic weights of the brain
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
         self.weights[row,column] = random.random() * 2 - 1
+
 
 
             

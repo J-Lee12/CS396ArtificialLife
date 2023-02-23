@@ -48,7 +48,7 @@ class PARALLELHILLCLIMBER:
         self.Print()
         self.Select()
 
-    def Spawn(self,id):
+    def Spawn(self):
         self.children = {}
         for parent in self.parents:
             currchild = copy.deepcopy(self.parents[parent])
@@ -66,7 +66,6 @@ class PARALLELHILLCLIMBER:
                 self.parents[i] = self.children[i]
 
     def Evolve(self):
-
         self.Evaluate(self.parents)
         
         for currentGeneration in range(c.numberofGenerations):
