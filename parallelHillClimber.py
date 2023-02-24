@@ -8,6 +8,7 @@ class PARALLELHILLCLIMBER:
     def __init__(self) -> None:
         os.system("rm brain*.nndf")
         os.system("rm fitness*.txt")
+        os.system("rm body*.urdf")
         self.parents = {}
         self.nextAvailableID = 0
         for i in range(c.populationSize):

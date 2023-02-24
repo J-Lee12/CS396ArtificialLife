@@ -28,15 +28,18 @@ The links are different colored as ones that are green have sensors on them and 
 These are randomly generated and allow the figure to have random movement and behavior.
 
 ### The way this works ###
-
 1. we call search.py, it creates an instance of the parallel hillclimber
-2. we evaluate the parents
-2. Then we evolve the first parents
-    3. to evolve, we first spawn children by deep copying the parents and then assigning them new ids
-    4. We then randomly modify part of the weights in the brain to change the fitness score
-    5. print the fitness
-    6. we pick whether or not the parent or the child had a better fitness
-7. repeat
+2. we evaluate the parents (do this step population size times)
+    a. We run Run_Simulation()
+    b. This calls the robot constructor with the specified ID
+        c. Robot gets the sensor values and updates its neural network values to what is included in brainID.nndf
+        d. The robot then acts based on the values given
+        e. prints the fitness of that robot in a file
+    f. We then create a copy of the parent and then mutate it
+    g. after doing steps a-e again, we check if the children or parent had a better fitness and select the one that did
+
+3. Run the entireity of step 2 Generationsize times
+
 
 
 

@@ -14,7 +14,7 @@ class ROBOT:
     def __init__(self,solutionID) -> None:
         self.solutionID = solutionID
         self.motors = {}
-        self.robotId = p.loadURDF("body.urdf")
+        self.robotId = p.loadURDF("body"+str(self.solutionID)+".urdf")
         self.nn = NEURAL_NETWORK("brain"+str(self.solutionID)+".nndf")
         # os.system("rm brain"+str(self.solutionID)+".nndf")
         pyrosim.Prepare_To_Simulate(self.robotId)
@@ -58,6 +58,3 @@ class ROBOT:
         f.close()
 
         os.system("mv tmp"+str(self.solutionID)+".txt" " fitness"+str(self.solutionID)+".txt")
-
-
-        # exit()

@@ -35,7 +35,7 @@ class SOLUTION:
     def Start_Simulation(self,mode):
         if self.myID == 0:
             self.Create_World()
-            self.Create_Body()
+        self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
         os.system("python3 simulate.py " + mode + " " + temp)
@@ -109,7 +109,8 @@ class SOLUTION:
             return [newx,newy,newz,"z"]
         
     def Create_Body(self):
-        pyrosim.Start_URDF("body.urdf")
+        "brain"+str(self.myID)+".nndf"
+        pyrosim.Start_URDF("body"+str(self.myID)+".urdf")
         for link in self.links:
             naming = link[0]
             positioning = link[1]
