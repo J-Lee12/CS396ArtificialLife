@@ -36,7 +36,6 @@ class SOLUTION:
             self.Generate_Body()
             self.Create_Body()
         self.Create_Brain()
-
         temp = str(self.myID)
         os.system("python3 simulate.py " + mode + " " + temp)
 
@@ -50,7 +49,6 @@ class SOLUTION:
 
     def Evaluate(self,mode):
         self.Create_World()
-        self.Generate_Body()
         self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
