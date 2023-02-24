@@ -122,6 +122,8 @@ class SOLUTION:
         start = numpy.random.uniform(0,2)
         pyrosim.Start_URDF("body.urdf")
         xpos = numpy.random.randint(-4,4)
+        print("\n")
+        print(f'here is the value of Torso pos={[xpos,0,3]} size={[start,1,1]}\n')
 
         if bool(random.getrandbits(1)):
             ## if true then it has a sensor
