@@ -107,6 +107,7 @@ class SOLUTION:
             return [newx,newy,newz,"z"]
         
     def Create_Body(self):
+        ## immediate fix is to get rid of the previous body.urdf and then just generate the new one
         self.Generate_Body()
         pyrosim.Start_URDF("body.urdf")
         for link in self.links:
@@ -128,6 +129,10 @@ class SOLUTION:
 
 
     def Generate_Body(self):
+
+        if len(self.links) != 0:
+            return
+
         x = numpy.random.uniform(0,4)
         y = numpy.random.uniform(0,4)
         z = numpy.random.uniform(0,4)
