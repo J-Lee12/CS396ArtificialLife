@@ -115,6 +115,7 @@ class SOLUTION:
             return [newx,newy,newz,"z"]
 
     def Create_Body(self):
+        print(f'create body is getting called')
         x = numpy.random.uniform(0,4)
         y = numpy.random.uniform(0,4)
         z = numpy.random.uniform(0,4)
@@ -287,7 +288,7 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+c.numSensorNeurons, weight=self.weights[currentRow][currentColumn])
         pyrosim.End()        
 
-    def Mutate(self,parent):
+    def Mutate(self):
         ## changes the snyaptic weights of the brain
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
