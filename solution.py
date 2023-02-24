@@ -17,15 +17,17 @@ class SOLUTION:
                 temp.append(numpy.random.rand())
             weights.append(temp)
         weights = numpy.asarray(weights)
-
         self.weights = weights
         self.weights = self.weights * 2 - 1
+
         self.fitness = 0
         self.myID = ID
         self.sensors = []
         self.motors = []
         self.links = []
-        self.counter = 0
+
+        self.Generate_Body()
+        # self.counter = 0
 
     def Set_ID(self):
         self.myID += 1
@@ -107,8 +109,6 @@ class SOLUTION:
             return [newx,newy,newz,"z"]
         
     def Create_Body(self):
-        ## immediate fix is to get rid of the previous body.urdf and then just generate the new one
-        self.Generate_Body()
         pyrosim.Start_URDF("body.urdf")
         for link in self.links:
             naming = link[0]
@@ -281,9 +281,47 @@ class SOLUTION:
 
     def Mutate(self):
         ## changes the snyaptic weights of the brain
+        print("\n")
+        print(f'here is my id {self.myID}\n')
+        print(f'here are the links {self.links}\n')
+        print(f'here are the joints {self.motors}\n')
+        print(f'here are the motors {self.motors}\n')
+        print("\n")
+
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
         self.weights[row,column] = random.random() * 2 - 1
+
+        # print("\n")
+        # print(f'here are the links {self.links}')
+
+        # ## change the size of the x,y,z of the first link
+        # firstlink = self.links[0]
+        # firstjoint = self.motors[0]
+        # start = firstlink[2][0]
+        # print("\n")
+        # print(f'here is start {start}')
+
+        # print("\n")
+        # print(f'before modifiying here is firstlink {firstlink}')
+        # print(f'before modifiying here is firstjoint {firstjoint}\n')
+
+        # xlength = numpy.random.uniform(0,2)
+        # ylength = numpy.random.uniform(0,2)
+        # zlength = numpy.random.uniform(0,2)
+
+        # firstlink[2] = [xlength,ylength,zlength]
+        # firstjoint[3] = [xlength+start/2,0,3]
+
+        # print("\n")
+        # print(f'after modifiying here is firstlink {self.links[0]}')
+        # print(f'after modifiying here is firstjoint {self.motors[0]}\n')
+        
+    
+
+
+
+
 
 
 

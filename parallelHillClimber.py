@@ -51,9 +51,17 @@ class PARALLELHILLCLIMBER:
     def Spawn(self,id):
         self.children = {}
         for parent in self.parents:
+            print("\n")
+            print(f'here is the current parent {self.parents[parent].myID}\n')
+            print(F'here is its weights {self.parents[parent].weights}\n')
+            print(f'and here is its links and joints {self.parents[parent].links}, {self.parents[parent].motors}\n')
             currchild = copy.deepcopy(self.parents[parent])
             self.children[parent] = currchild
             self.children[parent].Set_ID()
+            print(self.children)
+            # print(f'here is the child created {self.children[currchild].myID}')
+            # print(f'here are its weights {self.children[currchild].weights}')
+            # print(f'here are its links and joints {self.children[parent].links}, {self.children[parent].motors}')
             self.nextAvailableID += 2
 
     def Mutate(self):

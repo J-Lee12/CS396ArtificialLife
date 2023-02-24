@@ -29,8 +29,9 @@ These are randomly generated and allow the figure to have random movement and be
 
 ### The way this works ###
 
-1. we call search.py, it then evaluates the parents
-2. Then we evolve each generation
+1. we call search.py, it creates an instance of the parallel hillclimber
+2. we evaluate the parents
+2. Then we evolve the first parents
     3. to evolve, we first spawn children by deep copying the parents and then assigning them new ids
     4. We then randomly modify part of the weights in the brain to change the fitness score
     5. print the fitness
@@ -45,5 +46,5 @@ These are randomly generated and allow the figure to have random movement and be
 
 
 ###  Credits ###
-CS396 Artificial Life - Prof Sam Kriegma
+CS396 Artificial Life - Prof Sam Kriegman
 LudoBots Tutorial - https://www.reddit.com/r/ludobots/
