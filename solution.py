@@ -50,6 +50,7 @@ class SOLUTION:
 
     def Evaluate(self,mode):
         self.Create_World()
+        self.Generate_Body()
         self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
