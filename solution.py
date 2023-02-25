@@ -6,7 +6,6 @@ import time
 import constants as c
 import random
 
-
 class SOLUTION:
 
     def __init__(self,ID) -> None:
@@ -120,27 +119,44 @@ class SOLUTION:
         
     def Create_Body(self):
         pyrosim.Start_URDF("body"+str(self.myID)+".urdf")
-        for link in self.links:
-            naming = link[0]
-            positioning = link[1]
-            sizing = link[2]
-            coloring = link[3]
-            colornaming = link[4]
-            pyrosim.Send_Cube(name=naming,pos=positioning,size=sizing,color=coloring,colorname=colornaming)
+        joints = []
+        links = []
+        jointdict = {}
+        i = 0
 
-        for joint in self.motors:
+        while i < len(self.motors):
+            joint = self.motors[i]
             jointname = joint[0]
             jointparent = joint[1]
             jointchild = joint[2]
             jointposition = joint[3]
 
             if jointparent and jointchild not in self.check:
-                pass
+                self.motors.pop(i)
             else:
+                jointdict[jointparent] = 0
+                jointdict[jointchild] = 0
                 pyrosim.Send_Joint(name=jointname,parent=jointparent,child=jointchild,type= "revolute",position=jointposition,jointAxis="0 1 0")
+                joints.append(joint)
+                i += 1
+
+        j = 0
+        while j < len(self.links):    
+            link = self.links[j]
+            naming = link[0]
+            positioning = link[1]
+            sizing = link[2]
+            coloring = link[3]
+            colornaming = link[4]
+            if naming not in jointdict:
+                self.links.pop(i)
+            else:
+                pyrosim.Send_Cube(name=naming,pos=positioning,size=sizing,color=coloring,colorname=colornaming)
+                links.append(link)
+                j += 1
+
+        # print(f'here are the joints {joints}\n')
         pyrosim.End()
-
-
 
     def Generate_Body(self):
         x = numpy.random.uniform(0,4)
@@ -194,7 +210,6 @@ class SOLUTION:
                         z = numpy.random.uniform(0,4)
                         self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
                         self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
-                        #self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
                         self.check[c.names1[i]] = 0
                         prevx = temp[0]
                         prevy = temp[1]
@@ -234,7 +249,6 @@ class SOLUTION:
                         z = numpy.random.uniform(0,4)
                         self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
                         self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
-                        #self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
                         self.check[c.names2[i]]= 0
 
                         prevx = temp[0]
@@ -281,10 +295,11 @@ class SOLUTION:
         pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
         
         count = 0
+        # print(f'here are the sensors {self.sensors}')
         for i in self.sensors:
             pyrosim.Send_Sensor_Neuron(name= count, linkName=i)
             count += 1
-        
+        # print(f'here are the motors {self.motors}')
         for j in self.motors:
             pyrosim.Send_Motor_Neuron(name=count, jointName=j[0])
             count += 1

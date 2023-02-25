@@ -20,7 +20,6 @@ class PARALLELHILLCLIMBER:
 
     def Evaluate(self,solutions):
         for i in range(c.populationSize):
-            print("\n")
             print(f'I am running this individual {i} in this populationsize {c.populationSize}')
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")

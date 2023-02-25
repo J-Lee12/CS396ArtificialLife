@@ -3,6 +3,7 @@ import pybullet_data
 import time
 import pyrosim.pyrosim as pyrosim
 import constants as c
+import solution as s
 
 from sensor import SENSOR
 from motor import MOTOR
@@ -20,7 +21,8 @@ class ROBOT:
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        
+        # print("\n")
+        # print("\n")
         
 
     def Prepare_To_Sense(self):
@@ -33,8 +35,10 @@ class ROBOT:
             i.Get_Value(index)
 
     def Prepare_To_Act(self):
-        self.motors = {}
+        # self.motors = {}
+        # print(pyrosim.jointNamesToIndices)
         for jointName in pyrosim.jointNamesToIndices:
+            # print(f'here is the current jointName {jointName}')
             self.motors[jointName] = MOTOR(jointName)
 
     def Act(self,t):
