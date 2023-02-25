@@ -26,6 +26,9 @@ class SOLUTION:
         self.motors = []
         self.links = []
 
+        self.check ={}
+        self.check2 = {}
+
         self.Generate_Body()
         # self.counter = 0
 
@@ -33,6 +36,7 @@ class SOLUTION:
         self.myID += 1
 
     def Start_Simulation(self,mode):
+        print(f'starting simulation of id {self.myID}')
         if self.myID == 0:
             self.Create_World()
         self.Create_Body()
@@ -41,18 +45,21 @@ class SOLUTION:
         os.system("python3 simulate.py " + mode + " " + temp)
 
     def Wait_For_Simulation_To_End(self):
+        print(f'waiting for simulation {self.myID} to end')
         while not os.path.exists("fitness"+str(self.myID)+".txt"):
             time.sleep(.01)
 
         f = open("fitness"+str(self.myID)+".txt", "r")
         self.fitness = float(f.read())
         f.close()
+        print(f'simulation ended of {self.myID}')
 
     def Evaluate(self,mode):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         temp = str(self.myID)
+        print(f'evaluating {self.myID}')
         os.system("python3 simulate.py " + mode + " " + temp)
         
         while not os.path.exists("fitness"+str(self.myID)+".txt"):
@@ -90,6 +97,7 @@ class SOLUTION:
                 self.sensors.append(c.names[i])
             else:
                 self.links.append([c.names[i],[newx/2,0,0],[newx,newy,newz],'    <color rgba="0 1.0 1.0 1.0"/>','<material name="Cyan">'])
+            self.check[c.names[i]] = 0
             return [newx,newy,newz,"x"]
         
         elif self.Random_Side(prevside) == "y":
@@ -98,6 +106,7 @@ class SOLUTION:
                 self.sensors.append(c.names[i])
             else:
                 self.links.append([c.names[i],[0,newy/2,0],[newx,newy,newz],'    <color rgba="0 1.0 1.0 1.0"/>','<material name="Cyan">'])
+            self.check[c.names[i]] = 0
             return [newx,newy,newz,"y"]
         
         else:
@@ -106,10 +115,10 @@ class SOLUTION:
                 self.sensors.append(c.names[i])
             else:
                 self.links.append([c.names[i],[0,0,newz/2],[newx,newy,newz],'    <color rgba="0 1.0 1.0 1.0"/>','<material name="Cyan">'])
+            self.check[c.names[i]] = 0
             return [newx,newy,newz,"z"]
         
     def Create_Body(self):
-        "brain"+str(self.myID)+".nndf"
         pyrosim.Start_URDF("body"+str(self.myID)+".urdf")
         for link in self.links:
             naming = link[0]
@@ -124,16 +133,16 @@ class SOLUTION:
             jointparent = joint[1]
             jointchild = joint[2]
             jointposition = joint[3]
-            pyrosim.Send_Joint(name=jointname,parent=jointparent,child=jointchild,type= "revolute",position=jointposition,jointAxis="0 1 0")
+
+            if jointparent and jointchild not in self.check:
+                pass
+            else:
+                pyrosim.Send_Joint(name=jointname,parent=jointparent,child=jointchild,type= "revolute",position=jointposition,jointAxis="0 1 0")
         pyrosim.End()
 
 
 
     def Generate_Body(self):
-
-        if len(self.links) != 0:
-            return
-
         x = numpy.random.uniform(0,4)
         y = numpy.random.uniform(0,4)
         z = numpy.random.uniform(0,4)
@@ -150,6 +159,7 @@ class SOLUTION:
             ## if false then no sensor
             self.motors.append(["Torso_"+c.names[0],"Torso",c.names[0],[xpos+start/2,0,3]])
             self.links.append(["Torso",[xpos,0,3],[start,1,1],'    <color rgba="0 1.0 1.0 1.0"/>','<material name="Cyan">']) 
+        self.check["Torso"] = 0
 
         if bool(random.getrandbits(1)):
             self.links.append([c.names[0],[x/2,0,0],[x,y,z],'    <color rgba="0 1.0 0 1.0"/>','<material name="Green">'])
@@ -157,6 +167,7 @@ class SOLUTION:
         else:
             self.links.append([c.names[0],[x/2,0,0],[x,y,z],'    <color rgba="0 1.0 1.0 1.0"/>','<material name="Cyan">'])
         
+        self.check[c.names[0]]=0
         i = 1
         prevface = "x"
         
@@ -181,9 +192,10 @@ class SOLUTION:
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
                         self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
-    
+                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
+                        #self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
+                        self.check[c.names1[i]] = 0
                         prevx = temp[0]
                         prevy = temp[1]
                         prevz = temp[2]
@@ -220,8 +232,10 @@ class SOLUTION:
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
                         self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
+                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
+                        #self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
+                        self.check[c.names2[i]]= 0
 
                         prevx = temp[0]
                         prevy = temp[1]
@@ -255,7 +269,7 @@ class SOLUTION:
                         i += 1
                     
                     else:
-                        self.motors.append([c.names[i-1]+"_"+c.names[i],c.names[i-1],c.names[i],[0,prevy/2],prevz/2])
+                        self.motors.append([c.names[i-1]+"_"+c.names[i],c.names[i-1],c.names[i],[0,prevy/2,prevz/2]])
                         prevx = temp[0]
                         prevy = temp[1]
                         prevz = temp[2]
@@ -281,42 +295,22 @@ class SOLUTION:
         pyrosim.End()        
 
     def Mutate(self):
-        ## changes the snyaptic weights of the brain
-        print("\n")
-        print(f'here is my id {self.myID}\n')
-        print(f'here are the links {self.links}\n')
-        print(f'here are the joints {self.motors}\n')
-        print(f'here are the motors {self.motors}\n')
-        print("\n")
-
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
         self.weights[row,column] = random.random() * 2 - 1
-
-        # print("\n")
-        # print(f'here are the links {self.links}')
-
         # ## change the size of the x,y,z of the first link
-        # firstlink = self.links[0]
-        # firstjoint = self.motors[0]
-        # start = firstlink[2][0]
-        # print("\n")
-        # print(f'here is start {start}')
+        firstlink = self.links[0]
+        firstjoint = self.motors[0]
+        start = firstlink[2][0]
 
-        # print("\n")
-        # print(f'before modifiying here is firstlink {firstlink}')
-        # print(f'before modifiying here is firstjoint {firstjoint}\n')
 
-        # xlength = numpy.random.uniform(0,2)
-        # ylength = numpy.random.uniform(0,2)
-        # zlength = numpy.random.uniform(0,2)
+        xlength = numpy.random.uniform(0,2)
+        ylength = numpy.random.uniform(0,2)
+        zlength = numpy.random.uniform(0,2)
 
-        # firstlink[2] = [xlength,ylength,zlength]
-        # firstjoint[3] = [xlength+start/2,0,3]
+        firstlink[2] = [xlength,ylength,zlength]
+        firstjoint[3] = [xlength+start/2,0,3]
 
-        # print("\n")
-        # print(f'after modifiying here is firstlink {self.links[0]}')
-        # print(f'after modifiying here is firstjoint {self.motors[0]}\n')
         
     
 

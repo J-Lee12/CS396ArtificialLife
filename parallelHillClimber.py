@@ -2,6 +2,7 @@ import constants as c
 from solution import SOLUTION
 import copy
 import os
+from datetime import datetime
 
 class PARALLELHILLCLIMBER:
     
@@ -19,7 +20,11 @@ class PARALLELHILLCLIMBER:
 
     def Evaluate(self,solutions):
         for i in range(c.populationSize):
+            print("\n")
             print(f'I am running this individual {i} in this populationsize {c.populationSize}')
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(f'it is currently this time {current_time}\n')
             solutions[i].Start_Simulation("DIRECT")
 
         for i in range(c.populationSize):
@@ -43,26 +48,20 @@ class PARALLELHILLCLIMBER:
         reverse[currmin].Start_Simulation("GUI")
 
     def Evolve_For_One_Generation(self):
+        print('currently evolving')
         self.Spawn(self.nextAvailableID)
         self.Mutate()
         self.Evaluate(self.children)
         self.Print()
         self.Select()
+        print('done evolving\n')
 
     def Spawn(self,id):
         self.children = {}
         for parent in self.parents:
-            print("\n")
-            print(f'here is the current parent {self.parents[parent].myID}\n')
-            print(F'here is its weights {self.parents[parent].weights}\n')
-            print(f'and here is its links and joints {self.parents[parent].links}, {self.parents[parent].motors}\n')
             currchild = copy.deepcopy(self.parents[parent])
             self.children[parent] = currchild
             self.children[parent].Set_ID()
-            print(self.children)
-            # print(f'here is the child created {self.children[currchild].myID}')
-            # print(f'here are its weights {self.children[currchild].weights}')
-            # print(f'here are its links and joints {self.children[parent].links}, {self.children[parent].motors}')
             self.nextAvailableID += 2
 
     def Mutate(self):
@@ -76,6 +75,6 @@ class PARALLELHILLCLIMBER:
 
     def Evolve(self):
         self.Evaluate(self.parents)
-        
         for currentGeneration in range(c.numberofGenerations):
+            print(f'evolving {currentGeneration}')
             self.Evolve_For_One_Generation()

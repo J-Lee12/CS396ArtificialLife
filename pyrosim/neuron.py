@@ -9,7 +9,6 @@ import pyrosim.constants as c
 class NEURON: 
 
     def __init__(self,line):
-        # print(f'here is the line {line}')
         self.Determine_Name(line)
 
         self.Determine_Type(line)
