@@ -15,7 +15,7 @@ The creature decides which direction to grow in randomly however, the joint plac
 
 However, in the case that it decides to branch off another way then, it must have the information of which ever side's length it wants to grow to. In this example if the creature wants to grow to the right, then it must place a joint at the prior links xlength/2 and ylength/2. This is demonstrated the figure below.
 
-<img src="/images/IMG_0889.jpeg" width="100" height="100">
+<img src="/images/IMG_0889.jpeg" width="1000" height="1000">
 
 ![My Image](/images/IMG_0889.jpeg )
 
