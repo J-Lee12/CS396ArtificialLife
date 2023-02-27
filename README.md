@@ -102,7 +102,7 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 
 
 #### TO RUN ####
-1. Switch to branch a6try4
+1. Switch to branch a8try1-3
 2. Run 
 ```bash
 python3 search.py
