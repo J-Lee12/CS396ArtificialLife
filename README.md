@@ -41,10 +41,6 @@ The brain has a neural network that allows the creature to not only act, and sen
 
 In this 3d Morphology, at each point when a link is created there it is randomly decided whether or not if a link will be a sensor or not, however every joint becomes a motor neuron. 
 
-What this means is that we get the following diagram, 
-
-(insert diagram)
-
 The brain has an a two dimensional array that contains the weights for each synapse. 
 This array's values are created by random but then scaled to be within [-1,+1]
 
@@ -74,7 +70,7 @@ When we choose the parent that means that the copy would come from the parent ra
 Much like how we did in the brain, once we deepcopy the parent, we have access to the data that creates the body.
 To randomly modify body, I replaced the first link of the body (the one farthest away from the viewer) with another random link to see if that would help create a lower fitness. 
 
-Below is an example of a non evolved vs evolved
+Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
 
 <img src="/images/notevolved.png" width="500" height="500">
 <img src="/images/evolved.png" width="500" height="500">
@@ -91,15 +87,16 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 ## The way the simulator works
 1. we call search.py, it creates an instance of the parallel hillclimber
 2. we evaluate the parents (do this step population size times)
-    a. We run Run_Simulation()
-    b. This calls the robot constructor with the specified ID
-        c. Robot gets the sensor values and updates its neural network values to what is included in brainID.nndf
-        d. The robot then acts based on the values given
-        e. prints the fitness of that robot in a file
-    f. We then create a copy of the parent and then mutate it
-    g. after doing steps a-e again, we check if the children or parent had a better fitness and select the one that did
+    3. We run Run_Simulation()
+    4. This calls the robot constructor with the specified ID
+        5. Robot gets the sensor values and updates its neural network values to what is included in brainID.nndf
+        6. The robot then acts based on the values given
+        7. prints the fitness of that robot in a file
+    8. We then create a copy of the parent and then mutate it
+    9. after doing steps a-e again, we check if the children or parent had a better fitness and select the one that did
 
-3. Run the entireity of step 2 Generationsize times
+10. Run steps 3-9 Generationsize times
+11. Select the robot that had the best fitness and then simulate that one.
 
 
 
