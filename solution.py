@@ -205,12 +205,12 @@ class SOLUTION:
                     if prevface == "x":
                         self.motors.append([c.names[i-1]+"_"+c.names[i],c.names[i-1],c.names[i],[prevx,0,0]])
 
-                        x = numpy.random.uniform(0,4)
-                        y = numpy.random.uniform(0,4)
-                        z = numpy.random.uniform(0,4)
-                        self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
-                        self.check[c.names1[i]] = 0
+                        # x = numpy.random.uniform(0,4)
+                        # y = numpy.random.uniform(0,4)
+                        # z = numpy.random.uniform(0,4)
+                        # self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
+                        # self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
+                        # self.check[c.names1[i]] = 0
                         prevx = temp[0]
                         prevy = temp[1]
                         prevz = temp[2]
@@ -244,12 +244,12 @@ class SOLUTION:
                     
                     elif prevface == "x":
                         self.motors.append([c.names[i-1]+"_"+c.names[i],c.names[i-1],c.names[i],[prevx/2,prevy/2,0]])
-                        x = numpy.random.uniform(0,4)
-                        y = numpy.random.uniform(0,4)
-                        z = numpy.random.uniform(0,4)
-                        self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
-                        self.check[c.names2[i]]= 0
+                        # x = numpy.random.uniform(0,4)
+                        # y = numpy.random.uniform(0,4)
+                        # z = numpy.random.uniform(0,4)
+                        # self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
+                        # self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
+                        # self.check[c.names2[i]]= 0
 
                         prevx = temp[0]
                         prevy = temp[1]
@@ -324,7 +324,8 @@ class SOLUTION:
         zlength = numpy.random.uniform(0,2)
 
         firstlink[2] = [xlength,ylength,zlength]
-        firstjoint[3] = [xlength+start/2,0,3]
+        firstjoint[3] = [xlength+start/2,0,3]  
+
 
         
     

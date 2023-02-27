@@ -11,9 +11,9 @@ backphaseOffset = 0
 steps = 1000
 OldRange = (1 - -1)
 NewRange = (numpy.pi/4 - -numpy.pi/4)
-numberofGenerations = 1
+numberofGenerations = 25
 
-populationSize = 50
+populationSize = 25
 
 numoflinks = 4
 

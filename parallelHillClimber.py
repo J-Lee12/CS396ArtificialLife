@@ -3,6 +3,7 @@ from solution import SOLUTION
 import copy
 import os
 from datetime import datetime
+import numpy
 
 class PARALLELHILLCLIMBER:
     
@@ -12,6 +13,7 @@ class PARALLELHILLCLIMBER:
         os.system("rm body*.urdf")
         self.parents = {}
         self.nextAvailableID = 0
+        self.bestfitness = []
         for i in range(c.populationSize):
             self.parents[i] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
@@ -20,6 +22,7 @@ class PARALLELHILLCLIMBER:
 
     def Evaluate(self,solutions):
         for i in range(c.populationSize):
+            print("\n")
             print(f'I am running this individual {i} in this populationsize {c.populationSize}')
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
@@ -71,6 +74,13 @@ class PARALLELHILLCLIMBER:
         for i in self.children:
             if self.parents[i].fitness > self.children[i].fitness:
                 self.parents[i] = self.children[i]
+            self.bestfitness.append(self.parents[i].fitness)
+
+    def Save(self):
+        temp = numpy.array(self.bestfitness)
+        numpy.save('fitness-scores',temp)
+        print(f'saved into fitness-scores.npy {self.bestfitness}, {temp}')
+
 
     def Evolve(self):
         self.Evaluate(self.parents)
