@@ -15,9 +15,8 @@ The creature decides which direction to grow in randomly however, the joint plac
 
 However, in the case that it decides to branch off another way then, it must have the information of which ever side's length it wants to grow to. In this example if the creature wants to grow to the right, then it must place a joint at the prior links xlength/2 and ylength/2. This is demonstrated the figure below.
 
-<img src="/images/IMG_0889.jpeg" width="1000" height="1000">
+<img src="/images/IMG_0889.jpeg" width="500" height="500">
 
-![My Image](/images/IMG_0889.jpeg )
 
 The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
 
@@ -27,7 +26,10 @@ In order to randomly generate the links I used a random float generator from num
 Using this allowed me to create links of random sizes in the x,y,z directions. 
 
 Below are examples of what are possible. 
-![My Image](/images/possible1.png) ![My Image](/images/possible2.png) ![My Image](/images/possible3.png) ![My Image](/images/possible4.png)
+<img src="/images/possible1.png" width="500" height="500">
+<img src="/images/possible2.png" width="500" height="500">
+<img src="/images/possible3.png" width="500" height="500">
+<img src="/images/possible4.png" width="500" height="500">
 
 However in order to prevent a 3d snake like creature, everytime I added a link in a different direction then what the previous link was in, I added a link to a random face to the opposite side. This resulted in the 3d creatures shown above.
 
@@ -74,8 +76,8 @@ To randomly modify body, I replaced the first link of the body (the one farthest
 
 Below is an example of a non evolved vs evolved
 
-![My Image](/images/notevolved.png) ![My Image](/images/evolved.png)
-
+<img src="/images/notevolved.png" width="500" height="500">
+<img src="/images/evolved.png" width="500" height="500">
 
 ## Data
 
