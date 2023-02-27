@@ -19,6 +19,7 @@ class SIMULATION:
 
         if directOrGui == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
+            # p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
         else:
             self.physicsClient = p.connect(p.GUI)
             p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
@@ -31,7 +32,7 @@ class SIMULATION:
 
 
     def Run(self):
-        for i in range(0,1000):
+        for i in range(0,500):
             time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(i)
