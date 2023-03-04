@@ -13,6 +13,7 @@ class SIMULATION:
     
     def __init__(self) -> None:
 
+        print(sys.argv)
 
         directOrGui = sys.argv[1]
         solutionID = sys.argv[2]
@@ -33,7 +34,7 @@ class SIMULATION:
 
 
     def Run(self):
-        for i in range(0,100):
+        for i in range(0,1000):
             time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(i)
