@@ -74,22 +74,20 @@ class PARALLELHILLCLIMBER:
     def Select(self):
         for i in self.children:
             if self.parents[i].fitness > self.children[i].fitness:
-                print(f'parent fitness is {self.parents[i].fitness} child fitness is {self.children[i].fitness}')
                 self.parents[i] = self.children[i]
-                print(f'the parent fitness is now {self.parents[i].fitness}\n')
+                
             
     def Find_Best_Fitness(self):
         temp = []
         for i in self.parents:
             temp.append(self.parents[i].fitness)
         temp.sort()
-        print(f'Here are fitness this round {temp}\n')
         self.bestfitness.append(temp[0])
 
     def Save(self):
         temp = numpy.array(self.bestfitness)
         numpy.save('fitness-scores',temp)
-        print(f'saved into fitness-scores.npy {self.bestfitness}, {temp}')
+        print("best fitness from each generation saved into fitness-scores.npy")
 
 
     def Evolve(self):

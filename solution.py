@@ -308,6 +308,9 @@ class SOLUTION:
         pyrosim.End()        
 
     def Mutate(self):
+        ## motors = [name, parent, child, position]
+        ## links = [name,position,size, color, colorname]
+
         row = random.randint(0,(c.numSensorNeurons - 1))
         column = random.randint(0,(c.numMotorNeurons - 1))
         self.weights[row,column] = random.random() * 2 - 1
@@ -315,16 +318,15 @@ class SOLUTION:
         firstlink = self.links[0]
         firstjoint = self.motors[0]
         start = firstlink[2][0]
-
-
         xlength = numpy.random.uniform(0,2)
         ylength = numpy.random.uniform(0,2)
         zlength = numpy.random.uniform(0,2)
-        ## size
         firstlink[2] = [xlength,ylength,zlength]
-
-        # firstjoint[3] = [xlength+start/2,0,3]  
-
+        
+        ## if the size changes, then I need to change the position to match the joint
+        jointxpos = firstjoint[3][0]
+        newx = jointxpos - xlength/2
+        firstlink[1][0] = newx
 
         
     
