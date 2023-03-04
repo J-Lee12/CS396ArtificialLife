@@ -34,14 +34,14 @@ class SOLUTION:
     def Set_ID(self):
         self.myID += 1
 
-    def Start_Simulation(self,mode):
+    def Start_Simulation(self,mode,gen):
         print(f'starting simulation of id {self.myID}')
         if self.myID == 0:
             self.Create_World()
-        self.Create_Body()
-        self.Create_Brain()
+        self.Create_Body(gen)
+        self.Create_Brain(gen)
         temp = str(self.myID)
-        os.system("python3 simulate.py " + mode + " " + temp)
+        os.system("python3 simulate.py " + mode + " " + temp + " " + str(gen))
 
     def Wait_For_Simulation_To_End(self):
         print(f'waiting for simulation {self.myID} to end')
@@ -117,8 +117,8 @@ class SOLUTION:
             self.check[c.names[i]] = 0
             return [newx,newy,newz,"z"]
         
-    def Create_Body(self):
-        pyrosim.Start_URDF("body"+str(self.myID)+".urdf")
+    def Create_Body(self,gen):
+        pyrosim.Start_URDF(str(gen)+"_"+"body"+str(self.myID)+".urdf")
         joints = []
         links = []
         jointdict = {}
@@ -288,9 +288,9 @@ class SOLUTION:
                         prevface = temp[3]
                         i += 1
 
-    def Create_Brain(self):
+    def Create_Brain(self,gen):
          #Brain creation
-        pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
+        pyrosim.Start_NeuralNetwork(str(gen)+"_"+"brain"+str(self.myID)+".nndf")
         
         count = 0
         # print(f'here are the sensors {self.sensors}')

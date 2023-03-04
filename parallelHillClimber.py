@@ -20,14 +20,14 @@ class PARALLELHILLCLIMBER:
 
         self.child = 0
 
-    def Evaluate(self,solutions):
+    def Evaluate(self,solutions,gen):
         for i in range(c.populationSize):
             print("\n")
             print(f'I am running this individual {i} in this populationsize {c.populationSize}')
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(f'it is currently this time {current_time}\n')
-            solutions[i].Start_Simulation("DIRECT")
+            solutions[i].Start_Simulation("DIRECT",gen)
 
         for i in range(c.populationSize):
             solutions[i].Wait_For_Simulation_To_End()
@@ -47,13 +47,16 @@ class PARALLELHILLCLIMBER:
                 currparent = self.parents[i]
                 currmin = self.parents[i].fitness
         
-        reverse[currmin].Start_Simulation("GUI")
+        f = open('bestid.txt','w')
+        f.write(str(reverse[currmin].myID))
+        f.close()
+        reverse[currmin].Start_Simulation("GUI",c.numberofGenerations-1)
 
-    def Evolve_For_One_Generation(self):
-        print('currently evolving')
+    def Evolve_For_One_Generation(self,num):
+        print(f'currently evolving {num}')
         self.Spawn(self.nextAvailableID)
         self.Mutate()
-        self.Evaluate(self.children)
+        self.Evaluate(self.children,num)
         self.Print()
         self.Select()
         self.Find_Best_Fitness()
@@ -91,7 +94,7 @@ class PARALLELHILLCLIMBER:
 
 
     def Evolve(self):
-        self.Evaluate(self.parents)
+        self.Evaluate(self.parents,9999)
         for currentGeneration in range(c.numberofGenerations):
             print(f'evolving {currentGeneration}')
-            self.Evolve_For_One_Generation()
+            self.Evolve_For_One_Generation(currentGeneration)

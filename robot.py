@@ -12,11 +12,12 @@ import os
 
 class ROBOT:
 
-    def __init__(self,solutionID) -> None:
+    def __init__(self,solutionID,gen) -> None:
         self.solutionID = solutionID
         self.motors = {}
-        self.robotId = p.loadURDF("body"+str(self.solutionID)+".urdf")
-        self.nn = NEURAL_NETWORK("brain"+str(self.solutionID)+".nndf")
+        self.gen = gen
+        self.robotId = p.loadURDF(str(self.gen)+"_"+"body"+str(self.solutionID)+".urdf")
+        self.nn = NEURAL_NETWORK(str(self.gen)+"_"+"brain"+str(self.solutionID)+".nndf")
         # os.system("rm brain"+str(self.solutionID)+".nndf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()

@@ -16,9 +16,10 @@ class SIMULATION:
 
         directOrGui = sys.argv[1]
         solutionID = sys.argv[2]
+        gen = sys.argv[3]
 
         if directOrGui == "DIRECT":
-            self.physicsClient = p.connect(p.GUI)
+            self.physicsClient = p.connect(p.DIRECT)
             p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
         else:
             self.physicsClient = p.connect(p.GUI)
@@ -28,11 +29,11 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT(solutionID)
+        self.robot = ROBOT(solutionID,gen)
 
 
     def Run(self):
-        for i in range(0,500):
+        for i in range(0,100):
             time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(i)
