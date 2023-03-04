@@ -102,11 +102,29 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 
 
 #### TO RUN ####
-1. Switch to branch a8try1-3
-2. Run 
+1. Switch to branch finalproject-try1
+2. To change the number of generations and the population size, change the variables NumberofGenerations and populationSize in constants.py
+3. Run 
 ```bash
 python3 search.py
 ```
+4. To visualize the graph, edit plot.py to read in the numpy files that you decided to name them and the legends accordingly
+5. Run
+```bash
+python3 plot.py
+```
+### To Resimulate ###
+1. open bestid.txt to find which id had the best fitness
+2. To simulate the first body of that id, Run
+```bash
+python3 replay.py id 0
+```
+3. To simulate the final body of that id you must know the number of the last gen
+```bash
+python3 replay.py id gen
+```
+
+
 
 ###  Credits ###
 CS396 Artificial Life - Prof Sam Kriegman

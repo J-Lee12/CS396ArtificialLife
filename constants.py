@@ -13,7 +13,7 @@ OldRange = (1 - -1)
 NewRange = (numpy.pi/4 - -numpy.pi/4)
 numberofGenerations = 3
 
-populationSize = 1
+populationSize = 2
 
 numoflinks = 4
 

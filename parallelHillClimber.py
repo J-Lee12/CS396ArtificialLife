@@ -8,9 +8,10 @@ import numpy
 class PARALLELHILLCLIMBER:
     
     def __init__(self) -> None:
-        os.system("rm brain*.nndf")
-        os.system("rm fitness*.txt")
-        os.system("rm body*.urdf")
+        # os.system("rm brain*.nndf")
+        # os.system("rm fitness*.txt")
+        # os.system("rm body*.urdf")
+        self.Erase_Files()
         self.parents = {}
         self.nextAvailableID = 0
         self.bestfitness = []
@@ -94,7 +95,13 @@ class PARALLELHILLCLIMBER:
 
 
     def Evolve(self):
-        self.Evaluate(self.parents,9999)
+        self.Evaluate(self.parents,0)
         for currentGeneration in range(c.numberofGenerations):
             print(f'evolving {currentGeneration}')
-            self.Evolve_For_One_Generation(currentGeneration)
+            self.Evolve_For_One_Generation(currentGeneration+1)
+    
+    def Erase_Files(self):
+        i = 0
+        while i <= c.numberofGenerations:
+            os.system("rm" + " " + str(i)+"*" )
+            i += 1
