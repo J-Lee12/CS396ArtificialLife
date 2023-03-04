@@ -1,0 +1,685 @@
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:43
+
+starting simulation of id 0
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:43
+
+starting simulation of id 1
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:43
+
+starting simulation of id 2
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:44
+
+starting simulation of id 3
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:44
+
+starting simulation of id 4
+waiting for simulation 0 to end
+simulation ended of 0
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 2 to end
+simulation ended of 2
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 4 to end
+simulation ended of 4
+evolving 0
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:45
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:45
+
+starting simulation of id 2
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:46
+
+starting simulation of id 3
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:46
+
+starting simulation of id 4
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:46
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 2 to end
+simulation ended of 2
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7543922879665306 child fitness -0.7501291910727302
+parent fitness 3.148655292348854 child fitness 3.155131004494148
+parent fitness 1.5808843241473791 child fitness 1.580734446102881
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is 1.5808843241473791 child fitness is 1.580734446102881
+the parent fitness is now 1.580734446102881
+
+Here are fitness this round [-0.7543922879665306, 1.580734446102881, 3.018039720730509, 3.148655292348854, 3.403161921075638]
+
+done evolving
+
+evolving 1
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:47
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:47
+
+starting simulation of id 2
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:48
+
+starting simulation of id 3
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:48
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:48
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 2 to end
+simulation ended of 2
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7543922879665306 child fitness -0.7554813741918615
+parent fitness 3.148655292348854 child fitness 3.1486640407119286
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is -0.7543922879665306 child fitness is -0.7554813741918615
+the parent fitness is now -0.7554813741918615
+
+Here are fitness this round [-0.7554813741918615, 1.580734446102881, 3.018039720730509, 3.148655292348854, 3.403161921075638]
+
+done evolving
+
+evolving 2
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:49
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:49
+
+starting simulation of id 3
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:50
+
+starting simulation of id 3
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:50
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:50
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7554813741918615 child fitness 3.1486416227536873
+parent fitness 3.148655292348854 child fitness 3.1486416227536873
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is 3.148655292348854 child fitness is 3.1486416227536873
+the parent fitness is now 3.1486416227536873
+
+Here are fitness this round [-0.7554813741918615, 1.580734446102881, 3.018039720730509, 3.1486416227536873, 3.403161921075638]
+
+done evolving
+
+evolving 3
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:51
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:51
+
+starting simulation of id 3
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:52
+
+starting simulation of id 4
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:52
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:52
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 3 to end
+simulation ended of 3
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7554813741918615 child fitness -0.7556943502754712
+parent fitness 3.1486416227536873 child fitness 3.1486596126699213
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is -0.7554813741918615 child fitness is -0.7556943502754712
+the parent fitness is now -0.7556943502754712
+
+Here are fitness this round [-0.7556943502754712, 1.580734446102881, 3.018039720730509, 3.1486416227536873, 3.403161921075638]
+
+done evolving
+
+evolving 4
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:53
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:53
+
+starting simulation of id 4
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:54
+
+starting simulation of id 4
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:54
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:54
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7556943502754712 child fitness 3.1486665020821842
+parent fitness 3.1486416227536873 child fitness 3.1486665020821842
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+expected a world element, continuing without it.Version = 4.1 INTEL-20.2.48
+Vendor = Intel Inc.
+Renderer = Intel(R) Iris(TM) Plus Graphics 655
+b3Printf: Selected demo: Physics Server
+startThreads creating 1 threads.
+starting thread 0
+started thread 0 
+MotionThreadFunc thread started
+b3Printf: b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+
+b3Printf: expected a world element, continuing without it.
+numActiveThreads = 0
+stopping threads
+Thread with taskId 0 exiting
+Thread TERMINATED
+destroy semaphore
+semaphore destroyed
+destroy main semaphore
+main semaphore destroyed
+Here are fitness this round [-0.7556943502754712, 1.580734446102881, 3.018039720730509, 3.1486416227536873, 3.403161921075638]
+
+done evolving
+
+evolving 5
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:55
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:55
+
+starting simulation of id 4
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:55
+
+starting simulation of id 4
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:56
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:56
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7556943502754712 child fitness 3.1486401137116466
+parent fitness 3.1486416227536873 child fitness 3.1486401137116466
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is 3.1486416227536873 child fitness is 3.1486401137116466
+the parent fitness is now 3.1486401137116466
+
+Here are fitness this round [-0.7556943502754712, 1.580734446102881, 3.018039720730509, 3.1486401137116466, 3.403161921075638]
+
+done evolving
+
+evolving 6
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:57
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:57
+
+starting simulation of id 4
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:57
+
+starting simulation of id 5
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:03:58
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:03:58
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7556943502754712 child fitness -0.7548025741014229
+parent fitness 3.1486401137116466 child fitness 3.403161921075638
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+Here are fitness this round [-0.7556943502754712, 1.580734446102881, 3.018039720730509, 3.1486401137116466, 3.403161921075638]
+
+done evolving
+
+evolving 7
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:03:59
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:03:59
+
+starting simulation of id 4
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:03:59
+
+starting simulation of id 5
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:04:00
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:04:00
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 4 to end
+simulation ended of 4
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.7556943502754712 child fitness -0.756394471150478
+parent fitness 3.1486401137116466 child fitness 3.403161921075638
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+parent fitness is -0.7556943502754712 child fitness is -0.756394471150478
+the parent fitness is now -0.756394471150478
+
+Here are fitness this round [-0.756394471150478, 1.580734446102881, 3.018039720730509, 3.1486401137116466, 3.403161921075638]
+
+done evolving
+
+evolving 8
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:04:01
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:04:01
+
+starting simulation of id 5
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:04:01
+
+starting simulation of id 5
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:04:02
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:04:02
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.756394471150478 child fitness 3.403161921075638
+parent fitness 3.1486401137116466 child fitness 3.403161921075638
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+Here are fitness this round [-0.756394471150478, 1.580734446102881, 3.018039720730509, 3.1486401137116466, 3.403161921075638]
+
+done evolving
+
+evolving 9
+currently evolving
+
+
+I am running this individual 0 in this populationsize 5
+it is currently this time 14:04:03
+
+starting simulation of id 1
+
+
+I am running this individual 1 in this populationsize 5
+it is currently this time 14:04:03
+
+starting simulation of id 5
+
+
+I am running this individual 2 in this populationsize 5
+it is currently this time 14:04:03
+
+starting simulation of id 5
+
+
+I am running this individual 3 in this populationsize 5
+it is currently this time 14:04:04
+
+starting simulation of id 5
+
+
+I am running this individual 4 in this populationsize 5
+it is currently this time 14:04:04
+
+starting simulation of id 5
+waiting for simulation 1 to end
+simulation ended of 1
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+waiting for simulation 5 to end
+simulation ended of 5
+
+
+parent fitness 3.018039720730509 child fitness 3.018039720730509
+parent fitness -0.756394471150478 child fitness 3.403161921075638
+parent fitness 3.1486401137116466 child fitness 3.403161921075638
+parent fitness 1.580734446102881 child fitness 3.403161921075638
+parent fitness 3.403161921075638 child fitness 3.403161921075638
+
+
+Here are fitness this round [-0.756394471150478, 1.580734446102881, 3.018039720730509, 3.1486401137116466, 3.403161921075638]
+
+done evolving
+
+starting simulation of id 4
+saved into fitness-scores.npy [-0.7543922879665306, -0.7554813741918615, -0.7554813741918615, -0.7556943502754712, -0.7556943502754712, -0.7556943502754712, -0.7556943502754712, -0.756394471150478, -0.756394471150478, -0.756394471150478], [-0.75439229 -0.75548137 -0.75548137 -0.75569435 -0.75569435 -0.75569435
+ -0.75569435 -0.75639447 -0.75639447 -0.75639447]
