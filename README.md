@@ -5,7 +5,8 @@
 ## Info
 For the final Project for CS396 - Artificial Life at Northwestern University, we are asked to not only randomly generate a 3d morphology, but to also evolve it for locomotion through evolving both the brains and the body. In this case the locomotion that we are aiming for is one that moves to the left "away" from the viewer.
 
-## Joints
+## Randomly Generating The Body
+######Joints
 In order to randomly generate a 3d morphology, I wanted to first randomly generate the position of the first link of the creature.
 
 The first link is very important as the first link and position are absolute in pybullet, this means that for any subsequent links/joints, it would be relative to the link/joint upstream to it.
@@ -20,7 +21,7 @@ However, in the case that it decides to branch off another way then, it must hav
 
 The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
 
-## Links
+######Links
 
 In order to randomly generate the links I used a random float generator from numpy.
 Using this allowed me to create links of random sizes in the x,y,z directions. 
@@ -35,7 +36,7 @@ However in order to prevent a 3d snake like creature, everytime I added a link i
 
 As can be shown in the diagrams, some links are green and some are cyan. The ones that are green are links that contains sensor neurons. The cyan ones are normal links. 
 
-## Brain
+## Randomly Generating the Brain
 
 The brain has a neural network that allows the creature to not only act, and sense, but to allow its sensors to be able to influence the way that it acts. 
 
