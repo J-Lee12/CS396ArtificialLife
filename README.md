@@ -54,6 +54,8 @@ We do this by obtaining the last x position of the robot.
 
 Because we are looking for the robot to be moving "away" in the x direction that means that we are looking for a negative fitness as we want a negative displacement.
 
+**insert a screenshot of the simulator**
+
 ## Mutating the Brain
 
 To mutate the brain, what happens is that we deepcopy the parent to have an exact copy of the parent that has no references to the original parent. This allows us to randomly modify the child such that it doesn't modify the parent.
@@ -75,8 +77,8 @@ To randomly modify body, I replaced the first link of the body (the one farthest
 
 Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
 
-<img src="/images/notevolved.png" width="500" height="500">
-<img src="/images/evolved.png" width="500" height="500">
+<img src="/images/notevolved.png" width="400" height="400">
+<img src="/images/evolved.png" width="400" height="400">
 
 ## Data
 
