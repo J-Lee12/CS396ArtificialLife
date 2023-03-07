@@ -77,8 +77,7 @@ To randomly modify body, I replaced the first link of the body (the one farthest
 
 Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
 
-<img src="/images/notevolved.png" width="400" height="400">
-<img src="/images/evolved.png" width="400" height="400">
+<img src="/images/notevolved.png" width="400" height="400"> <img src="/images/evolved.png" width="400" height="400">
 
 ## Data
 
