@@ -35,6 +35,8 @@ However in order to prevent a 3d snake like creature, everytime I added a link i
 
 As can be shown in the diagrams, some links are green and some are cyan. The ones that are green are links that contains sensor neurons. The cyan ones are normal links. 
 
+**include some diagrams**
+
 ## Randomly Generating the Brain
 
 The brain has a neural network that allows the creature to not only act, and sense, but to allow its sensors to be able to influence the way that it acts. 
@@ -61,8 +63,23 @@ To mutate the brain, what happens is that we deepcopy the parent to have an exac
 
 In each generation we randomly modify a synapse in the child's weights. This causes the fitness to differ between the parent and the child. 
 
-**Selection occurs by comparing the parent and child's fitness and selecting whichever one had a more negative value**
+**include a cartoon**
 
+## Mutating the Body
+
+Much like how we did in the brain, once we deepcopy the parent, we have access to the data that creates the body.
+
+Within that data we have access to all of the links and the joints. We mutate by getting the first link and then replacing it with a randomly sized link to see if that will help with evolution.
+
+Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
+
+<img src="/images/notevolved.png" width="400" height="400"> <img src="/images/evolved.png" width="400" height="400">
+
+**include a cartoon**
+
+## Selection
+**Selection occured by replacing the first link of the body (the one farthest away from the viewer) with another randomly sized link to see if it would help the robot in evolution**
+**Selection occurs by comparing the parent and child's fitness and selecting whichever one had a more negative value**
 An example being
 
 ![My Image](/images/fitness.png)
@@ -70,14 +87,6 @@ An example being
 In this case we would choose the parent in both generations because they had lower fitnesses than their children.
 When we choose the parent that means that the copy would come from the parent rather than the child.
 
-## Mutating the Body
-
-Much like how we did in the brain, once we deepcopy the parent, we have access to the data that creates the body.
-**Selection occured by replacing the first link of the body (the one farthest away from the viewer) with another randomly sized link to see if it would help the robot in evolution**
-
-Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
-
-<img src="/images/notevolved.png" width="400" height="400"> <img src="/images/evolved.png" width="400" height="400">
 
 ## Data
 
