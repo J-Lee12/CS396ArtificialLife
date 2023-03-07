@@ -62,7 +62,7 @@ To mutate the brain, what happens is that we deepcopy the parent to have an exac
 
 In each generation we randomly modify a synapse in the child's weights. This causes the fitness to differ between the parent and the child. 
 
-We then compare the parent's and child's fitness and select whichever had a more negative fitness.
+**Selection occurs by comparing the parent and child's fitness and selecting whichever one had a more negative  value**
 An example being
 
 ![My Image](/images/fitness.png)
@@ -73,7 +73,7 @@ When we choose the parent that means that the copy would come from the parent ra
 ## Mutating the Body
 
 Much like how we did in the brain, once we deepcopy the parent, we have access to the data that creates the body.
-To randomly modify body, I replaced the first link of the body (the one farthest away from the viewer) with another random link to see if that would help create a lower fitness. 
+T**Selection occured  by replacing the first link of the body (the one farthest away from the viewer) with another randomly sized link to see if it would help the robot in evolution**
 
 Below is an example of a non evolved vs evolved As can be shown the first block is taller and slightly wider than the block in the first image.
 
