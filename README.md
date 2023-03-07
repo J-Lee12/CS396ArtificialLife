@@ -27,10 +27,8 @@ In order to randomly generate the links I used a random float generator from num
 Using this allowed me to create links of random sizes in the x,y,z directions. 
 
 Below are examples of what are possible. 
-<img src="/images/possible1.png" width="500" height="500">
-<img src="/images/possible2.png" width="500" height="500">
-<img src="/images/possible3.png" width="500" height="500">
-<img src="/images/possible4.png" width="500" height="500">
+<img src="/images/possible1.png" width="400" height="400"> <img src="/images/possible2.png" width="400" height="400">
+<img src="/images/possible3.png" width="400" height="400"> <img src="/images/possible4.png" width="400" height="400">
 
 However in order to prevent a 3d snake like creature, everytime I added a link in a different direction then what the previous link was in, I added a link to a random face to the opposite side. This resulted in the 3d creatures shown above.
 
