@@ -27,6 +27,7 @@ In order to randomly generate the links I used a random float generator from num
 Using this allowed me to create links of random sizes in the x,y,z directions. 
 
 Below are examples of what are possible. 
+
 <img src="/images/possible1.png" width="400" height="400"> <img src="/images/possible2.png" width="400" height="400">
 <img src="/images/possible3.png" width="400" height="400"> <img src="/images/possible4.png" width="400" height="400">
 
