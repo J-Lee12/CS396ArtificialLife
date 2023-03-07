@@ -7,19 +7,19 @@ For the final Project for CS396 - Artificial Life at Northwestern University, we
 
 ## Randomly Generating The Body
 ###### Joints
-- In order to randomly generate a 3d morphology, I wanted to first randomly generate the position of the first link of the creature.
+In order to randomly generate a 3d morphology, I wanted to first randomly generate the position of the first link of the creature.
 
-- The first link is very important as the first link and position are absolute in pybullet, this means that for any subsequent links/joints, it would be relative to the link/joint upstream to it.
+The first link is very important as the first link and position are absolute in pybullet, this means that for any subsequent links/joints, it would be relative to the link/joint upstream to it.
 
-- In order to create a 3d creature, at each step the creature must randomly choose which direction to grow in. 
-- The creature decides which direction to grow in randomly however, the joint placement gets a bit complicated in this case.
+In order to create a 3d creature, at each step the creature must randomly choose which direction to grow in. 
+The creature decides which direction to grow in randomly however, the joint placement gets a bit complicated in this case.
 
-- However, in the case that it decides to branch off another way then, it must have the information of which ever side's length it wants to grow to. In this example if the creature wants to grow to the right, then it must place a joint at the prior links xlength/2 and ylength/2. This is demonstrated the figure below.
+However, in the case that it decides to branch off another way then, it must have the information of which ever side's length it wants to grow to. In this example if the creature wants to grow to the right, then it must place a joint at the prior links xlength/2 and ylength/2. This is demonstrated the figure below.
 
 <img src="/images/IMG_0889.jpeg" width="500" height="500">
 
 
-- The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
+The links are different colored as ones that are green have sensors on them and ones that are cyan do not.
 
 ###### Links
 
