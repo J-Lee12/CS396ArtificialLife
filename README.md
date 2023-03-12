@@ -56,7 +56,7 @@ We do this by obtaining the last x position of the robot.
 
 Because we are looking for the robot to be moving "away" in the x direction that means that we are looking for a negative fitness as we want a negative displacement.
 
-<img src="/images/fitnessshot.png" width="1200" height="400">
+<img src="/images/fitnessshot.png" width="1200" height="200">
 
 ## Mutating the Brain
 
