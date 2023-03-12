@@ -100,19 +100,17 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 ## The way the simulator works
 1. we call search.py, it creates an instance of the parallel hillclimber
 2. we evaluate the parents (do this step population size times)
-    3. We run Run_Simulation()
-    4. This calls the robot constructor with the specified ID
-        5. Robot gets the sensor values and updates its neural network values to what is included in brainID.nndf
-        6. The robot then acts based on the values given
-        7. prints the fitness of that robot in a file
-    8. We then create a copy of the parent and then mutate it
-    9. after doing steps a-e again, we check if the children or parent had a better fitness and select the one that did
-
+3. We run Run_Simulation()
+4. This calls the robot constructor with the specified ID
+5. Robot gets the sensor values and updates its neural network values to what is included in brainID.nndf
+6. The robot then acts based on the values given
+7. prints the fitness of that robot in a file
+8. We then create a copy of the parent and then mutate it
+9. after doing steps a-e again, we check if the children or parent had a better fitness and select the one that did
 10. Run steps 3-9 Generationsize times
 11. Select the robot that had the best fitness and then simulate that one.
 
-
-
+**for each run, each body, brain, and fitness file will be saved so that they can replayed**
 
 #### TO RUN ####
 1. Switch to branch finalproject-try1
@@ -126,6 +124,24 @@ python3 search.py
 ```bash
 python3 plot.py
 ```
+
+**for each run, each body, brain, and fitness file will be saved so that they can replayed**
+the convention for the files is 
+```bash
+gen#_brainid#.nndf
+gen#_bodyid#.urdf
+```
+
+An example being if I wanted to get the 2nd Generation's 1st body
+```bash
+2_body1.urdf
+```
+
+**IMPORTANT**
+If a child is chosen over the parent, then the id number will increase by one.
+I.E if in evolution id#2's child has a better fitness, then in the next generation it will now be refered to as id#3.
+
+
 ### To Resimulate ###
 1. open bestid.txt to find which id had the best fitness
 2. To simulate the first body of that id, Run
