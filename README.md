@@ -113,6 +113,12 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 **for each run, each body, brain, and fitness file will be saved so that they can replayed**
 
 #### TO RUN ####
+
+Setup the environment
+```bash
+pip3 install pybullet
+```
+
 1. Switch to branch finalproject-try1
 2. To change the number of generations and the population size, change the variables NumberofGenerations and populationSize in constants.py
 3. Run 
@@ -153,6 +159,18 @@ python3 replay.py id 0
 python3 replay.py id gen
 ```
 
+## Results
+
+I stored the data of 5 different runs of having 25 Generations and 100 Rounds of Generation.
+However as mentioned, because the goal was to evolve to get more and more negative fitness scores the graph would been inverse, so I multiplied all values by -1 so that values would appear as though they grew.
+
+![My Image](/images/plot.png)
+
+As can be shown, each seed was able to evolve and arrive at a solution that would create a robot that moved it to the left "away" from the viewer
+
+Below is a link to a youtube video that summarizes the findings of this project.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ls-Nv8qw4Q0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ###  Credits ###
