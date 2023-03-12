@@ -5,6 +5,10 @@
 ## Info
 For the final Project for CS396 - Artificial Life at Northwestern University, we are asked to not only randomly generate a 3d morphology, but to also evolve it for locomotion through evolving both the brains and the body. In this case the locomotion that we are aiming for is one that moves to the left "away" from the viewer.
 
+Here's a quick teaser.
+
+<img src="finalproject.gif" width="300" height="300">
+
 ## Randomly Generating The Body
 ###### Joints
 In order to randomly generate a 3d morphology, I wanted to first randomly generate the position of the first link of the creature.
