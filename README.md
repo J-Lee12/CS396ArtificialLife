@@ -88,15 +88,6 @@ In this case we would choose the parent in both generations because they had low
 When we choose the parent that means that the copy would come from the parent rather than the child.
 
 
-## Data
-
-I stored the data of 5 different runs of having 25 Generations and 100 Rounds of Generation.
-However as mentioned, because the goal was to evolve to get more and more negative fitness scores the graph would been inverse, so I multiplied all values by -1 so that values would appear as though they grew.
-
-![My Image](/images/plot.png)
-
-As can be shown, each seed was able to evolve and arrive at a solution that would create a robot that moved it to the left "away" from the viewer
-
 ## The way the simulator works
 1. we call search.py, it creates an instance of the parallel hillclimber
 2. we evaluate the parents (do this step population size times)
