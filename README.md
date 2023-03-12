@@ -47,7 +47,7 @@ In this 3d Morphology, at each point when a link is created there it is randomly
 The brain has an a two dimensional array that contains the weights for each synapse. 
 This array's values are created by random but then scaled to be within [-1,+1]
 
-<img src="/images/brainarray.png" width="500" height="500">
+<img src="/images/brainarray.png" width="800" height="400">
 
 ## Fitness
 
@@ -56,7 +56,7 @@ We do this by obtaining the last x position of the robot.
 
 Because we are looking for the robot to be moving "away" in the x direction that means that we are looking for a negative fitness as we want a negative displacement.
 
-<img src="/images/fitnessshot.png" width="700" height="500">
+<img src="/images/fitnessshot.png" width="1000" height="400">
 
 ## Mutating the Brain
 
