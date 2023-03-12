@@ -7,7 +7,7 @@ For the final Project for CS396 - Artificial Life at Northwestern University, we
 
 Here's a quick teaser.
 
-<img src="finalproject.gif" width="300" height="300">
+<img src="/finalproject.gif" width="300" height="300">
 
 ## Randomly Generating The Body
 ###### Joints
