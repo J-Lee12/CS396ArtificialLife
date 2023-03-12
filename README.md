@@ -170,7 +170,7 @@ As can be shown, each seed was able to evolve and arrive at a solution that woul
 
 Below is a link to a youtube video that summarizes the findings of this project.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ls-Nv8qw4Q0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://youtu.be/ls-Nv8qw4Q0
 
 
 ###  Credits ###
