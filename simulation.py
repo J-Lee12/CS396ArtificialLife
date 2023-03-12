@@ -12,9 +12,6 @@ from robot import ROBOT
 class SIMULATION:
     
     def __init__(self) -> None:
-
-        print(sys.argv)
-
         directOrGui = sys.argv[1]
         solutionID = sys.argv[2]
         gen = sys.argv[3]
@@ -34,8 +31,8 @@ class SIMULATION:
 
 
     def Run(self):
-        for i in range(0,500):
-            time.sleep(1/60)
+        for i in range(0,1000):
+            # time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()

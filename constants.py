@@ -11,7 +11,7 @@ backphaseOffset = 0
 steps = 1000
 OldRange = (1 - -1)
 NewRange = (numpy.pi/4 - -numpy.pi/4)
-numberofGenerations = 3
+numberofGenerations = 2
 
 populationSize = 2
 

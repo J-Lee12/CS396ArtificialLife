@@ -206,9 +206,9 @@ class SOLUTION:
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
-                        self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
-                        self.check[c.names1[i]] = 0
+                        # self.links.append([c.names1[i],[0,y/2,0],[x,y,z],'    <color rgba="0 0 0.5 1"/>','<material name="Ryan">'])
+                        # self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[temp[0]/2,temp[1]/2,0]])
+                        # self.check[c.names1[i]] = 0
                         prevx = temp[0]
                         prevy = temp[1]
                         prevz = temp[2]
@@ -245,9 +245,9 @@ class SOLUTION:
                         x = numpy.random.uniform(0,4)
                         y = numpy.random.uniform(0,4)
                         z = numpy.random.uniform(0,4)
-                        self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
-                        self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
-                        self.check[c.names2[i]]= 0
+                        # self.links.append([c.names2[i],[0,0,z/2],[x,y,z],'    <color rgba="1 0.5 0.5 1"/>','<material name="Quin">'])
+                        # self.motors.append([c.names[i]+"_"+c.names1[i],c.names[i],c.names1[i],[0,temp[1]/2,temp[2]/2]])
+                        # self.check[c.names2[i]]= 0
 
                         prevx = temp[0]
                         prevy = temp[1]
