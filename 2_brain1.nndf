@@ -19,7 +19,7 @@
     <synapse sourceNeuronName = "2" targetNeuronName = "7" weight = "-0.2852560583606558" />
     <synapse sourceNeuronName = "2" targetNeuronName = "8" weight = "-0.27704645959531815" />
     <synapse sourceNeuronName = "2" targetNeuronName = "9" weight = "-0.03254111363286749" />
-    <synapse sourceNeuronName = "2" targetNeuronName = "10" weight = "0.19907270773204644" />
+    <synapse sourceNeuronName = "2" targetNeuronName = "10" weight = "-0.7906809357634283" />
     <synapse sourceNeuronName = "3" targetNeuronName = "6" weight = "-0.701584278037771" />
     <synapse sourceNeuronName = "3" targetNeuronName = "7" weight = "-0.9022148993749455" />
     <synapse sourceNeuronName = "3" targetNeuronName = "8" weight = "0.11590173901083833" />
@@ -34,5 +34,5 @@
     <synapse sourceNeuronName = "5" targetNeuronName = "7" weight = "0.6362045414603335" />
     <synapse sourceNeuronName = "5" targetNeuronName = "8" weight = "0.9419642682704374" />
     <synapse sourceNeuronName = "5" targetNeuronName = "9" weight = "0.09781850452079999" />
-    <synapse sourceNeuronName = "5" targetNeuronName = "10" weight = "0.7664300868214222" />
+    <synapse sourceNeuronName = "5" targetNeuronName = "10" weight = "-0.8882740281856041" />
 </neuralNetwork>

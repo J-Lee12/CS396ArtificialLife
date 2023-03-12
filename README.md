@@ -38,8 +38,6 @@ However in order to prevent a 3d snake like creature, everytime I added a link i
 
 As can be shown in the diagrams, some links are green and some are cyan. The ones that are green are links that contains sensor neurons. The cyan ones are normal links. 
 
-**include some diagrams**
-
 ## Randomly Generating the Brain
 
 The brain has a neural network that allows the creature to not only act, and sense, but to allow its sensors to be able to influence the way that it acts. 
@@ -49,7 +47,7 @@ In this 3d Morphology, at each point when a link is created there it is randomly
 The brain has an a two dimensional array that contains the weights for each synapse. 
 This array's values are created by random but then scaled to be within [-1,+1]
 
-**add a diagram of the brain here**
+<img src="/images/brainarray.png" width="500" height="500">
 
 ## Fitness
 
@@ -58,7 +56,7 @@ We do this by obtaining the last x position of the robot.
 
 Because we are looking for the robot to be moving "away" in the x direction that means that we are looking for a negative fitness as we want a negative displacement.
 
-**insert a screenshot of the simulator**
+<img src="/images/fitnessshot.png" width="700" height="500">
 
 ## Mutating the Brain
 
@@ -81,7 +79,6 @@ Below is an example of a non evolved vs evolved As can be shown the first block 
 <img src="/images/body-mutation.jpeg" width="600" height="600">
 
 ## Selection
-**Selection occured by replacing the first link of the body (the one farthest away from the viewer) with another randomly sized link to see if it would help the robot in evolution**
 **Selection occurs by comparing the parent and child's fitness and selecting whichever one had a more negative value**
 An example being
 
