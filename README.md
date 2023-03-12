@@ -32,7 +32,7 @@ Using this allowed me to create links of random sizes in the x,y,z directions.
 
 Below are examples of what are possible. 
 
-<img src="/images/Genotype-phenotype.jpeg" width="500" height="900"> 
+<img src="/images/Genotype-phenotype.jpeg" width="900" height="900"> 
 
 However in order to prevent a 3d snake like creature, everytime I added a link in a different direction then what the previous link was in, I added a link to a random face to the opposite side. This resulted in the 3d creatures shown above.
 
@@ -66,7 +66,7 @@ To mutate the brain, what happens is that we deepcopy the parent to have an exac
 
 In each generation we randomly modify a synapse in the child's weights. This causes the fitness to differ between the parent and the child. 
 
-<img src="/images/brain-mutation.jpeg" width="600" height="600">
+<img src="/images/brain-mutation.jpeg" width="800" height="600">
 
 ## Mutating the Body
 
